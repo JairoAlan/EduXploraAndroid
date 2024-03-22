@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp">
+
+        <ImageView
+            android:id="@+id/Img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/reco"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/Usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Img1"
+            android:layout_marginLeft="15sp"
+            android:text="¡Hola Usuario!"
+            android:textSize="35sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Mensaje"
+            android:layout_below="@+id/Usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:text="Conoce nuestras recomendaciones"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/ivCla"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_below="@+id/Mensaje"
+            android:src="@drawable/cal"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="50sp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/Mensaje"
+            android:layout_toRightOf="@+id/ivCla"
+            android:background="#525353"
+            android:id="@+id/tvUno"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="120dp"
+            android:layout_below="@+id/tvUno"
+            android:background="#525353"
+            android:id="@+id/tvDos"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

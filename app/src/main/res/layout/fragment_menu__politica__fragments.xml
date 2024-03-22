@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menu_Politica_Fragments">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#42052F">
+
+            <!-- TextView que estará en frente -->
+
+            <!-- Botón que estará detrás -->
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="439dp"
+                android:layout_height="216dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/circulo"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.964"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="88dp"
+                android:text="Politica de seguridad"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="136dp"
+                android:text="Plataforma EduXplora"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- LinearLayout -->
+            <LinearLayout
+                android:layout_width="364dp"
+                android:layout_height="1210dp"
+                android:layout_marginTop="180dp"
+                android:orientation="vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.489"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- Aquí coloca tus elementos dentro del LinearLayout -->
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="400dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/politica"/>
+                    <TextView
+                        android:layout_width="280dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="200dp"
+                        android:textAlignment="center"
+                        android:text="Última actualización: 16 de Febrero 2024 EduXplora se compromete a proteger la privacidad de sus usuarios. Esta Política de  Privacidad describe cómo recopilamos, usamos y compartimos información personal cuando utilizas nuestra aplicación móvil EduXplora (en adelante, la Aplicación). Al utilizar la Aplicación, aceptas la recopilación y el uso de información de acuerdo con esta política."/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20sp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="160dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="150dp"
+                        android:textAlignment="center"
+                        android:text="
+
+Información que Recopilamos
+                    Cuando utilizas nuestra Aplicación, podemos recopilar cierta información personal identificable, como tu nombre, dirección de correo electrónico y ubicación. También podemos recopilar información sobre tus preferencias y comportamiento de navegación dentro de la Aplicación."/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20sp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="160dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="150dp"
+                        android:textAlignment="center"
+                        android:text="Uso de la Información
+
+                        Utilizamos la información recopilada para proporcionarte los servicios solicitados, mejorar nuestra Aplicación y personalizar tu experiencia. Esto puede incluir el envío de correos electrónicos sobre nuevas características, promociones u otras actualizaciones relacionadas con la Aplicación.
+"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20sp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_marginTop="7dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="90dp"
+                        android:textAlignment="center"
+                        android:text="Seguridad de la Información
+Implementamos medidas de seguridad para proteger tu información personal contra accesos no autorizados, alteraciones, divulgaciones o destrucciones."/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20sp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="150dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_marginTop="7dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="140dp"
+                        android:textAlignment="center"
+                        android:text="Cambios en esta Política de Privacidad
+Nos reservamos el derecho de actualizar o cambiar nuestra Política de Privacidad en cualquier momento. Te recomendamos revisar periódicamente esta página para estar al tanto de los cambios. La fecha de la última actualización se indicará al inicio de esta Política de Privacidad."/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20sp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="95dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_marginTop="7dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:layout_height="70dp"
+                        android:textAlignment="center"
+                        android:text="Contacto
+
+                                        Si tienes alguna pregunta sobre esta Política de Privacidad, no dudes en contactarnos a través del apartado de contacto."/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

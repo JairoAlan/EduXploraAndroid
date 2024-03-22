@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Buscar_Fragment">
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <include layout="@layout/toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginRight="20dp"
+                    android:text="Buscador de visitas"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Filtra y encuentra la mejor oppción"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/titulo_filtro"
+                    android:text="Carrera"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/spCarrera"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/titulo_filtro"
+                    android:text="Materia"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/spMateria"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde"
+                    android:spinnerMode="dropdown" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/black"
+                    android:backgroundTint="@color/grisfondo">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resultados"
+                        android:textSize="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 1"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres1"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 2"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres2"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 3"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 4"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 5"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 6"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 7"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 8"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="horizontal"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/Grisazuladooscuro">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:background="@drawable/eduicon"
+                            android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/borde"
+                                android:padding="5dp"
+                                android:text="Hola soy el resultado 9"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Solicitar"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</FrameLayout>

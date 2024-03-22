@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/iQueEs"
+            android:title="¿Qué es Eduxplora?"
+            android:icon="@drawable/_question_mark_"/>
+
+        <item
+            android:id="@+id/iEva"
+            android:title="Evalúa tu visita"
+            android:icon="@drawable/clipboard_"/>
+
+        <item
+            android:id="@+id/iFav"
+            android:title="Favoritos"
+            android:icon="@drawable/heart_"/>
+
+        <item
+            android:id="@+id/iPoli"
+            android:title="Politica de Seguridad"
+            android:icon="@drawable/shield_"/>
+
+        <item android:title="">
+
+            <menu>
+
+                <item
+                    android:id="@+id/iComen"
+                    android:title="Comentarios"
+                    android:icon="@drawable/_comment_"/>
+
+                <item
+                    android:id="@+id/iConfig"
+                    android:title="Configuracion"
+                    android:icon="@drawable/_settings_"/>
+
+            </menu>
+
+        </item>
+
+
+    </group>
+
+
+</menu>

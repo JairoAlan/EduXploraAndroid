@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/iNoti"
+        android:icon="@drawable/_notifications_"
+        android:title="Notificacion"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/iCuenta"
+        android:icon="@drawable/_person_"
+        android:title="Mi cuenta"
+        app:showAsAction="ifRoom"/>
+
+</menu>

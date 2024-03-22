@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Resena_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#042363 ">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/escr"
+            android:id="@+id/ImgEscr"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImgEscr"
+            android:layout_margin="20dp"
+            android:text="Reseña de Visita Guiada"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#e8e8e9"
+            android:id="@+id/tvResena"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvResena"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingBottom="150dp"
+            android:hint="Escribe tu reseña aqui"
+            android:background="#e8e8e9"
+            android:id="@+id/etResena"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etResena"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="50dp"
+            android:background="#e8e8e9"
+            android:text="Enviar"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#e8e8e9"/>
+
+
+    </RelativeLayout>
+
+</FrameLayout>
