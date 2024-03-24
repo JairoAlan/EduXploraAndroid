@@ -7,6 +7,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +26,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Validar_Fragment extends Fragment {
+
+    TextView tvTodasSolic;
+
+    RequestQueue rq;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +74,42 @@ public class Validar_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_validar_, container, false);
+        View view = inflater.inflate(R.layout.fragment_validar_, container, false);
+        tvTodasSolic = view.findViewById(R.id.tvTodasSolic);
+        rq = Volley.newRequestQueue(requireContext());
+        mostrar();
+        return view;
+    }
+
+    public void mostrar(){
+        tvTodasSolic.setText("");
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
+        JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                for(int i=0;i<jsonArray.length();i++){
+                    try {
+                        JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
+                        tvTodasSolic.append("idSolicitud: "+ objeto.getString("idSolicitud")+"\n");
+                        tvTodasSolic.append("idEmpresa: "+ objeto.getString("idEmpresa")+"\n");
+                        tvTodasSolic.append("nombreEmpresa: "+ objeto.getString("nombreEmpresa")+"\n");
+                        tvTodasSolic.append("grupo: "+ objeto.getString("grupo")+"\n");
+                        tvTodasSolic.append("idUsuario: "+ objeto.getString("idUsuario")+"\n");
+                        tvTodasSolic.append("carrera: "+ objeto.getString("carrera")+"\n");
+                        tvTodasSolic.append("estadoActual: "+ objeto.getString("estadoActual")+"\n");
+                        tvTodasSolic.append("contactoEmpresa: "+ objeto.getString("contactoEmpresa")+"\n");
+                        tvTodasSolic.append("nombreUsuario: "+ objeto.getString("nombreUsuario")+"\n");
+                        tvTodasSolic.append("________________________________________\n");
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
     }
 }
