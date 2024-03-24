@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         binding.materialToolBar.setOnMenuItemClickListener(item ->{
             if(item.getItemId() == R.id.iNoti){
                 replaceFragment(new Notificacion_Fragment());
+            }else if(item.getItemId() == R.id.iCuenta){
+                replaceFragment(new Validar_Fragment());
             }
 
             return true;

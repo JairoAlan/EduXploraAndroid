@@ -4,10 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +30,7 @@ import org.json.JSONObject;
  */
 public class Validar_Fragment extends Fragment {
 
+    Button btnPend,btnAcep,btnRecha;
     TextView tvTodasSolic;
 
     RequestQueue rq;
@@ -75,7 +79,12 @@ public class Validar_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_validar_, container, false);
+
+        btnPend = view.findViewById(R.id.btnPend);
+        btnAcep = view.findViewById(R.id.btnAcep);
+        btnRecha = view.findViewById(R.id.btnRecha);
         tvTodasSolic = view.findViewById(R.id.tvTodasSolic);
+        tvTodasSolic.setMovementMethod(new ScrollingMovementMethod());
         rq = Volley.newRequestQueue(requireContext());
         mostrar();
         return view;
@@ -90,16 +99,12 @@ public class Validar_Fragment extends Fragment {
                 for(int i=0;i<jsonArray.length();i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
-                        tvTodasSolic.append("idSolicitud: "+ objeto.getString("idSolicitud")+"\n");
-                        tvTodasSolic.append("idEmpresa: "+ objeto.getString("idEmpresa")+"\n");
-                        tvTodasSolic.append("nombreEmpresa: "+ objeto.getString("nombreEmpresa")+"\n");
-                        tvTodasSolic.append("grupo: "+ objeto.getString("grupo")+"\n");
-                        tvTodasSolic.append("idUsuario: "+ objeto.getString("idUsuario")+"\n");
-                        tvTodasSolic.append("carrera: "+ objeto.getString("carrera")+"\n");
-                        tvTodasSolic.append("estadoActual: "+ objeto.getString("estadoActual")+"\n");
-                        tvTodasSolic.append("contactoEmpresa: "+ objeto.getString("contactoEmpresa")+"\n");
-                        tvTodasSolic.append("nombreUsuario: "+ objeto.getString("nombreUsuario")+"\n");
-                        tvTodasSolic.append("________________________________________\n");
+                        tvTodasSolic.append("Empresa: "+ objeto.getString("nombreEmpresa")+"\n");
+                        tvTodasSolic.append("Grupo: "+ objeto.getString("grupo")+"\n");
+                        tvTodasSolic.append("Usuario: "+ objeto.getString("nombreUsuario")+"\n");
+                        tvTodasSolic.append("Carrera: "+ objeto.getString("carrera")+"\n");
+                        tvTodasSolic.append("Estado: "+ objeto.getString("estadoActual")+"\n");
+                        tvTodasSolic.append("\n");
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -108,8 +113,10 @@ public class Validar_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-
+                volleyError.printStackTrace();
+                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+        rq.add(requerimento);
     }
 }
