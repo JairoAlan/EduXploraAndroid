@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 replaceFragment(new Menu_Config_Fragment());
             }
-            return false;
+            return true;
         });
 
     }
