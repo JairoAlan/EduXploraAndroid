@@ -81,6 +81,13 @@
             android:textSize="20sp"
             android:id="@+id/btnBuscar"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_below="@+id/btnBuscar"
+            android:layout_margin="20sp"/>
+
     </RelativeLayout>
 
 </FrameLayout>
