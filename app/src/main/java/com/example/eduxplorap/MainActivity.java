@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             if(item.getItemId() == R.id.iNoti){
                 replaceFragment(new Notificacion_Fragment());
             }else if(item.getItemId() == R.id.iCuenta){
-                replaceFragment(new Validar_Fragment());
+                replaceFragment(new buscar_Coor());
             }
 
             return true;

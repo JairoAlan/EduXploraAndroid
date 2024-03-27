@@ -109,6 +109,7 @@ public class Validar_Fragment extends Fragment {
                         throw new RuntimeException(e);
                     }
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override

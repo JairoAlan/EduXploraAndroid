@@ -7,6 +7,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +28,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Buscar_Fragment extends Fragment {
+
+    Spinner spCarrera, spMateria;
+
+    RequestQueue rq;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +77,39 @@ public class Buscar_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buscar_, container, false);
+        View view = inflater.inflate(R.layout.fragment_buscar_, container, false);
+        spCarrera = view.findViewById(R.id.spCarrera);
+        spMateria = view.findViewById(R.id.spMateria);
+        rq = Volley.newRequestQueue(requireContext());
+        mostrar();
+        return view;
+    }
+
+    public void mostrar(){
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtroc.php";
+        JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    try {
+                        JSONObject objeto = jsonArray.getJSONObject(i);
+                        String nombre = objeto.getString("nombre");
+                        adapter.add(nombre);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                spCarrera.setAdapter(adapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
+                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        rq.add(requerimento);
     }
 }
