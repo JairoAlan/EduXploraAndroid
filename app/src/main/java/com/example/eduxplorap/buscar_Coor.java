@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +38,7 @@ import org.json.JSONObject;
  */
 public class buscar_Coor extends Fragment {
 
-    TextView tvBus,tvListo;
+    TextView tvBus,tvListo,tvBuscar;
 
     Spinner Sr_uno,Sr_dos;
 
@@ -42,7 +46,9 @@ public class buscar_Coor extends Fragment {
 
     RequestQueue rq;
 
-    String materia;
+    String idCarreraSeleccionada;
+
+    ArrayList<String> idCarrerasList = new ArrayList<>(); // ArrayList para almacenar los idCarrera
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,13 +102,32 @@ public class buscar_Coor extends Fragment {
         rq = Volley.newRequestQueue(requireContext());
         carreraSr();
 
-        // Se selecciona el item
-        Sr_uno.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                materia = parent.getItemAtPosition(position).toString();
+            public void onClick(View v) {
+                buscar();
             }
         });
+
+        Sr_uno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // position es la posición del elemento seleccionado en el Spinner Sr_uno
+                // Puedes usar esta posición para acceder al elemento correspondiente en el ArrayList idCarrerasList
+
+                // Por ejemplo, para obtener el idCarrera en la posición seleccionada:
+                idCarreraSeleccionada = String.valueOf(position + 1);
+                Log.d("ID_CARRERA_SELECTED", "idCarreraSeleccionada: " + idCarreraSeleccionada);
+                materiaSr();
+                // Luego puedes usar este idCarrera según sea necesario en tu lógica
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Este método se llama cuando no se selecciona ningún elemento
+            }
+        });
+
 
         return view;
     }
@@ -121,7 +146,9 @@ public class buscar_Coor extends Fragment {
                     try {
                         JSONObject objeto = jsonArray.getJSONObject(i);
                         String nombre = objeto.getString("nombre");
+                        String idCarrera = objeto.getString("idCarrera");
                         adapter.add(nombre);
+                        idCarrerasList.add(idCarrera); // Agrega el idCarrera al ArrayList
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -138,8 +165,75 @@ public class buscar_Coor extends Fragment {
         rq.add(requerimento);
     }
 
-    public void materiaSr(){
+    public void materiaSr() {
 
-        String url2 = "http://localhost/eduxplora/filtrom.php?idCarrera="+materia;
+        String url2 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera="+idCarreraSeleccionada;
+
+        JsonObjectRequest requerimento2 = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                try {
+                    JSONArray materiasArray = jsonObject.getJSONArray("materias");
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item);
+
+                    if (materiasArray.length() > 0) {
+                        for (int i = 0; i < materiasArray.length(); i++) {
+                            JSONObject materiaObject = materiasArray.getJSONObject(i);
+                            String nombre = materiaObject.getString("nombre");
+                            adapter.add(nombre);
+                        }
+                    } else {
+                        // No hay materias registradas para la carrera proporcionada
+                        Toast.makeText(getContext(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_SHORT).show();
+                    }
+
+                    Sr_dos.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
+                Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rq.add(requerimento2);
     }
+
+    public void buscar(){
+        String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
+
+        JsonArrayRequest requerimento3 = new JsonArrayRequest(Request.Method.GET, url3, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject empresa = jsonArray.getJSONObject(i);
+                        String nombreEmpresa = empresa.getString("Nombre");
+                        // Mostrar el nombre de la empresa en un TextView
+                        tvBuscar.append("Nombre de la empresa: " + nombreEmpresa + "\n");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
+                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        rq.add(requerimento3);
+    }
+
+
+// Fin
 }
