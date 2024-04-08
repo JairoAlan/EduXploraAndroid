@@ -4,13 +4,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,11 +38,15 @@ import java.util.ArrayList;
  */
 public class Buscar_Fragment extends Fragment {
 
+    TextView tveduX,tvResultado;
+    LinearLayout llResultados,llResultados2;
     Spinner spCarrera, spMateria;
 
     RequestQueue rq;
 
     String idCarreraSeleccionada;
+
+    Button btnres1;
 
     ArrayList<String> idCarrerasList = new ArrayList<>(); // ArrayList para almacenar los idCarrera
 
@@ -89,6 +97,11 @@ public class Buscar_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_buscar_, container, false);
         spCarrera = view.findViewById(R.id.spCarrera);
         spMateria = view.findViewById(R.id.spMateria);
+        llResultados = view.findViewById(R.id.llResultados);
+        llResultados2 = view.findViewById(R.id.llResultados2);
+        tveduX = view.findViewById(R.id.tveduX);
+        tvResultado = view.findViewById(R.id.tvResultado);
+        btnres1 = view.findViewById(R.id.btnres1);
         rq = Volley.newRequestQueue(requireContext());
         carreraSr();
 
@@ -99,12 +112,19 @@ public class Buscar_Fragment extends Fragment {
                 idCarreraSeleccionada = String.valueOf(position + 1);
                 Log.d("ID_CARRERA_SELECTED", "idCarreraSeleccionada: " + idCarreraSeleccionada);
                 materiaSr();
-
+                buscar();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Este método se llama cuando no se selecciona ningún elemento
+            }
+        });
+
+        btnres1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -181,6 +201,49 @@ public class Buscar_Fragment extends Fragment {
         });
 
         rq.add(requerimento2);
+    }
+
+    public void buscar() {
+
+        String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
+
+        JsonObjectRequest requerimento3 = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                try {
+                    JSONArray empresasArray = jsonObject.getJSONArray("empresas");
+
+                    if (empresasArray.length() == 0) {
+                        Toast.makeText(getContext(), "No hay Empresas registradas ", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (empresasArray.length() > 0) {
+                        for (int i = 0; i < empresasArray.length(); i++) {
+                            JSONObject empresaObject = empresasArray.getJSONObject(i);
+                            tvResultado.setText("");
+                            tvResultado.append("Nombre: " + empresaObject.getString("Nombre"));
+                        }
+                    } else {
+                        // No hay materias registradas para la carrera proporcionada
+                        Toast.makeText(getContext(), "No hay Empresas registradas ", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
+                Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rq.add(requerimento3);
     }
 
 // Fin

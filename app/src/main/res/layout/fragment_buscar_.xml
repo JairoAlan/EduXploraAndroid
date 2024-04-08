@@ -95,24 +95,28 @@
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
-                        android:backgroundTint="@color/Grisazuladooscuro">
+                        android:backgroundTint="@color/Grisazuladooscuro"
+                        android:id="@+id/llResultados">
 
                         <TextView
                             android:layout_width="130dp"
                             android:layout_height="130dp"
                             android:background="@drawable/eduicon"
-                            android:layout_margin="10dp"/>
+                            android:layout_margin="10dp"
+                            android:id="@+id/tveduX"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:id="@+id/llResultados2">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:layout_margin="10dp"
                                 android:background="@drawable/borde"
                                 android:padding="5dp"
-                                android:text="Hola soy el resultado 1"/>
+                                android:text="Hola soy el resultado 1"
+                                android:id="@+id/tvResultado"/>
 
                             <Button
                                 android:layout_width="match_parent"
