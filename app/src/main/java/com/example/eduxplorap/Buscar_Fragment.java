@@ -144,9 +144,9 @@ public class Buscar_Fragment extends Fragment {
                     try {
                         JSONObject objeto = jsonArray.getJSONObject(i);
                         String nombre = objeto.getString("nombre");
-                        String idCarrera = objeto.getString("idCarrera");
+                        String ID_Carrera = objeto.getString("ID_Carrera");
                         adapter.add(nombre);
-                        idCarrerasList.add(idCarrera); // Agrega el idCarrera al ArrayList
+                        idCarrerasList.add(ID_Carrera); // Agrega el idCarrera al ArrayList
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
