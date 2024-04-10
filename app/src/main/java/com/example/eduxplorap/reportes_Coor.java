@@ -1,12 +1,26 @@
 package com.example.eduxplorap;
 
+import static com.itextpdf.text.pdf.PdfName.FONT;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Date;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +28,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class reportes_Coor extends Fragment {
+
+    Button btnRepo_Gen;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +74,61 @@ public class reportes_Coor extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reportes__coor, container, false);
+        View view = inflater.inflate(R.layout.fragment_reportes__coor, container, false);
+
+        btnRepo_Gen = view.findViewById(R.id.btnRepo_Gen);
+
+        btnRepo_Gen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createPDF();
+            }
+        });
+
+
+
+
+
+
+
+        return view;
     }
+
+    public void createPDF() {
+        Document doc = new Document();
+        try {
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Reporte.pdf";
+            File file = new File(path);
+            FileOutputStream fos = new FileOutputStream(file);
+            PdfWriter.getInstance(doc, fos);
+            doc.open();
+            addTitlePage(doc);
+            doc.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addTitlePage(Document doc) throws DocumentException {
+
+        Paragraph preface = new Paragraph();
+        // Agrega un espacio
+        addEmptyLine(preface, 1);
+        // Agrega un título
+        preface.add(new Paragraph("Reporte"));
+        addEmptyLine(preface, 1);
+        // Agrega una fecha
+        preface.add(new Paragraph(new Date().toString()));
+        addEmptyLine(preface, 2);
+        doc.add(preface);
+    }
+
+    public void addEmptyLine(Paragraph paragraph, int number) {
+        for (int i = 0; i < number; i++) {
+            paragraph.add(new Paragraph(" "));
+        }
+    }
+
+
 }

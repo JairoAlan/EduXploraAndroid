@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reportes"
-            android:textSize="35sp"
+            android:textSize="40sp"
             android:layout_marginTop="10sp"
             android:layout_marginLeft="100sp"
             android:layout_marginRight="80sp"
@@ -23,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Herramienta de generación de reportes"
-            android:textSize="15sp"
+            android:textSize="25sp"
+            android:textAlignment="center"
             android:layout_below="@id/tvRepor"
             android:layout_marginTop="10sp"
             android:layout_marginLeft="70sp"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#35B5D9"
-            android:layout_margin="15sp"
+            android:layout_margin="60sp"
             android:layout_below="@id/tvHerra"
             android:id="@+id/llPrimera">
 
@@ -50,7 +51,7 @@
                 android:id="@+id/tvRepoGen"/>
 
             <Button
-                android:layout_width="300sp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Generar"
                 android:textSize="25sp"
@@ -59,36 +60,6 @@
                 android:id="@+id/btnRepo_Gen"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="320sp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#35B5D9"
-            android:layout_margin="15sp"
-            android:layout_below="@id/llPrimera">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Verifica el número de visitas guiadas solicitadas, aceptadas y completadas"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:padding="15sp"
-                android:id="@+id/tvRepoEsta"/>
-
-            <Button
-                android:layout_width="300sp"
-                android:layout_height="wrap_content"
-                android:text="Generar"
-                android:textSize="25sp"
-                android:layout_margin="10sp"
-                android:background="#115366"
-                android:id="@+id/btnRepo_Est"/>
-
-        </LinearLayout>
-
 
 
     </RelativeLayout>
