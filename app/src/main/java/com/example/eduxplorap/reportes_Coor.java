@@ -2,8 +2,12 @@ package com.example.eduxplorap;
 
 import static com.itextpdf.text.pdf.PdfName.FONT;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -21,6 +25,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 
+import android.Manifest;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +35,9 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class reportes_Coor extends Fragment {
+
+    // Define el código de solicitud de permiso como una constante
+    private static final int REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE = 1;
 
     Button btnRepo_Gen;
 
@@ -81,7 +91,14 @@ public class reportes_Coor extends Fragment {
         btnRepo_Gen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createPDF();
+                // Verificar si ya se tienen los permisos de escritura en el almacenamiento externo
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    // Si no se tienen los permisos, solicitarlos al usuario
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE);
+                } else {
+                    // Si ya se tienen los permisos, proceder con la creación del PDF
+                    createPDF();
+                }
             }
         });
 
@@ -130,5 +147,20 @@ public class reportes_Coor extends Fragment {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == requestCode) {
+            // Verificar si el usuario otorgó los permisos
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permisos otorgados, proceder con la creación del PDF
+                createPDF();
+            } else {
+                // El usuario rechazó los permisos, manejar esta situación según sea necesario
+            }
+        }
+    }
 
+
+// Fin
 }
