@@ -118,6 +118,22 @@ public class localizaciongps extends Fragment {
         Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
         startActivity(intent);
     }
+    // Funcion para calcular distancia entre dos puntos
+    public double calcularDistancia(double latitud1, double longitud1, double latitud2, double longitud2) {
+        final int RADIO_TIERRA = 6371; // Radio medio de la Tierra en kilómetros
+
+        double dLatitud = Math.toRadians(latitud2 - latitud1);
+        double dLongitud = Math.toRadians(longitud2 - longitud1);
+
+        double a = Math.sin(dLatitud / 2) * Math.sin(dLatitud / 2) +
+                Math.cos(Math.toRadians(latitud1)) * Math.cos(Math.toRadians(latitud2)) *
+                        Math.sin(dLongitud / 2) * Math.sin(dLongitud / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return RADIO_TIERRA * c;
+    }
+
 
 //Fin
 }
