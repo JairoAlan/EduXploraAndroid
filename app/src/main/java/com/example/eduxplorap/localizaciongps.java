@@ -77,7 +77,7 @@ public class localizaciongps extends Fragment {
             public void onClick(View v) {
                 latitud = "20.1352722";
                 longitud = "-98.383043";
-                pinLocationMap(latitudUno,longitudUno);
+                pinLocationMap(latitud,longitud);
             }
         });
 

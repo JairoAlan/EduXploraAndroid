@@ -20,18 +20,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pin a una locación especifica en el mapa"/>
+            android:text="Pin a la UPT especifica en el mapa desde mi ubicacion"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/BtnpinLocacion"
-            android:text="Pin a Localizacion"/>
+            android:text="Pin a la UPT"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abrir una direccion desde una ubicacion especifica"/>
+            android:text="Abrir una direccion desde la ubicacion del usuario"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -42,13 +42,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abrir direccion entre dos direcciones especificas"/>
+            android:text="Abrir direccion entre la Upt al destino"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/BtnDireccionDos"
-            android:text="Dos direcciones Especificas"/>
+            android:text="Desde UPT al destino"/>
 
     </LinearLayout>
 
