@@ -2,7 +2,9 @@ package com.example.eduxplorap;
 
 import static com.itextpdf.text.pdf.PdfName.FONT;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,7 +28,7 @@ import java.io.FileOutputStream;
 import java.util.Date;
 
 import android.Manifest;
-
+import android.widget.Toast;
 
 
 /**
@@ -98,6 +100,7 @@ public class reportes_Coor extends Fragment {
                 } else {
                     // Si ya se tienen los permisos, proceder con la creación del PDF
                     createPDF();
+
                 }
             }
         });
@@ -114,7 +117,7 @@ public class reportes_Coor extends Fragment {
     public void createPDF() {
         Document doc = new Document();
         try {
-            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Reporte.pdf";
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/Reporte.pdf";
             File file = new File(path);
             FileOutputStream fos = new FileOutputStream(file);
             PdfWriter.getInstance(doc, fos);
@@ -150,7 +153,7 @@ public class reportes_Coor extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == requestCode) {
+        if (requestCode == REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE) {
             // Verificar si el usuario otorgó los permisos
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permisos otorgados, proceder con la creación del PDF
@@ -160,6 +163,8 @@ public class reportes_Coor extends Fragment {
             }
         }
     }
+
+
 
 
 // Fin
