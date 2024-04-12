@@ -38,7 +38,8 @@ import java.util.ArrayList;
  */
 public class Buscar_Fragment extends Fragment {
 
-    TextView tveduX,tvResultado;
+    TextView tveduX,tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5;
+    TextView tvResultado6, tvResultado7, tvResultado8, tvResultado9;
     LinearLayout llResultados,llResultados2;
     Spinner spCarrera, spMateria;
 
@@ -105,6 +106,23 @@ public class Buscar_Fragment extends Fragment {
         // TextView
         tveduX = view.findViewById(R.id.tveduX);
         tvResultado = view.findViewById(R.id.tvResultado);
+        tvResultado.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado2 = view.findViewById(R.id.tvResultado2);
+        tvResultado2.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado3 = view.findViewById(R.id.tvResultado3);
+        tvResultado3.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado4 = view.findViewById(R.id.tvResultado4);
+        tvResultado4.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado5 = view.findViewById(R.id.tvResultado5);
+        tvResultado5.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado6 = view.findViewById(R.id.tvResultado6);
+        tvResultado6.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado7 = view.findViewById(R.id.tvResultado7);
+        tvResultado7.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado8 = view.findViewById(R.id.tvResultado8);
+        tvResultado8.setMovementMethod(new ScrollingMovementMethod());
+        tvResultado9 = view.findViewById(R.id.tvResultado9);
+        tvResultado9.setMovementMethod(new ScrollingMovementMethod());
         // Botones de resultado
         btnres1 = view.findViewById(R.id.btnres1);
         btnres2 = view.findViewById(R.id.btnres2);
@@ -157,7 +175,6 @@ public class Buscar_Fragment extends Fragment {
     }
 
     public void carreraSr(){
-
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtroc.php";
 
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -233,7 +250,7 @@ public class Buscar_Fragment extends Fragment {
     }
 
     public void buscar() {
-
+        final TextView[] textViews = {tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5, tvResultado6, tvResultado7, tvResultado8, tvResultado9};
         String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
 
         JsonObjectRequest requerimento3 = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
@@ -248,10 +265,11 @@ public class Buscar_Fragment extends Fragment {
                     }
 
                     if (empresasArray.length() > 0) {
-                        for (int i = 0; i < empresasArray.length(); i++) {
+                        for (int i = 0; i < 9; i++) {
                             JSONObject empresaObject = empresasArray.getJSONObject(i);
-                            tvResultado.setText("");
-                            tvResultado.append("Nombre: " + empresaObject.getString("Nombre"));
+                            textViews[i].append("Nombre: " + empresaObject.getString("Nombre"));
+                            textViews[i].append("URL: " + empresaObject.getString("Contacto"));
+                            textViews[i].append("Descripcion: " + empresaObject.getString("Descripcion"));
                         }
                     } else {
                         // No hay materias registradas para la carrera proporcionada

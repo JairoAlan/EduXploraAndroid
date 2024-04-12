@@ -3,138 +3,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu_QueEs_Fragment">
-
-    <include layout="@layout/footbar"/>
+    tools:context=".Menu_QueEs_Fragment"
+    android:background="@color/wine">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono1"/>
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@color/verde"
+                android:id="@+id/ll1">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono1"
-                    android:layout_margin="10dp"
-                    android:text="We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono2"/>
+                    android:text="¿Qué es EduXplora?"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono2"
-                    android:layout_margin="10dp"
-                    android:text="We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you"/>
-            </RelativeLayout>
+                    android:text="Plataforma de busqueda inteligente"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono3"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono3"
-                    android:layout_margin="10dp"
-                    android:text="Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido Mucho trabajo y nada de diversión hacen de Jack un tipo aburrido"/>
-            </RelativeLayout>
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/iconoeduxt"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/ll1"
+                android:layout_centerInParent="true"
+                android:id="@+id/icono"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono4"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono4"
-                    android:layout_margin="10dp"
-                    android:text="We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you"/>
-            </RelativeLayout>
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/white"
+                android:layout_below="@+id/icono"
+                android:padding="10dp"
+                android:text="EduXplora es un motor de búsqueda innovador, diseñado para recomendar visitas guiadas específicas para cada especialidad en instituciones de educación superior."
+                android:textAlignment="center"
+                android:textColor="@color/verde"
+                android:textSize="17sp"
+                android:id="@+id/tvInfo1"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono5"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono5"
-                    android:layout_margin="10dp"
-                    android:text="We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you"/>
-            </RelativeLayout>
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/white"
+                android:layout_below="@+id/tvInfo1"
+                android:padding="10dp"
+                android:text="Un motor de búsqueda inteligente que te ayudará a encontrar la mejor visita guiada."
+                android:textAlignment="center"
+                android:textColor="@color/verde"
+                android:textSize="17sp"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/wine"
-                    android:id="@+id/icono6"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/icono6"
-                    android:layout_margin="10dp"
-                    android:text="We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you"/>
-            </RelativeLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </ScrollView>
 
