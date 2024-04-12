@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/iNoti"
-        android:icon="@drawable/_notifications_"
+        android:icon="@drawable/_analytics_"
         android:title="Notificacion"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/iCuenta"
-        android:icon="@drawable/_person_"
+        android:icon="@drawable/_location__"
         android:title="Mi cuenta"
         app:showAsAction="ifRoom"/>
 
