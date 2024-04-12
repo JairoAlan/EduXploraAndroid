@@ -91,7 +91,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -106,7 +106,7 @@
                             android:id="@+id/tveduX"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:id="@+id/llResultados2">
                             <TextView
@@ -129,12 +129,24 @@
                                 android:backgroundTint="@color/melon"
                                 android:id="@+id/btnres1"/>
 
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi1"/>
+
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -147,7 +159,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -168,12 +180,23 @@
                                 android:backgroundTint="@color/melon"
                                 android:id="@+id/btnres2"/>
 
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi2"/>
+
                         </LinearLayout>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -186,7 +209,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -204,14 +227,27 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres3"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi3"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -224,7 +260,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -242,14 +278,26 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres4"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi4"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -262,7 +310,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -280,14 +328,26 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres5"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi5"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -300,7 +360,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -318,14 +378,26 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres6"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi6"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -338,7 +410,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -356,14 +428,27 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres7"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi7"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -376,7 +461,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -394,14 +479,27 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres8"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi8"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_margin="20dp"
                         android:background="@drawable/borde"
@@ -414,7 +512,7 @@
                             android:layout_margin="10dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="match_parent"
@@ -432,7 +530,19 @@
                                 android:text="Solicitar"
                                 android:textSize="9dp"
                                 android:textColor="@color/black"
-                                android:backgroundTint="@color/melon"/>
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnres9"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Ubicacion"
+                                android:textSize="9dp"
+                                android:textColor="@color/black"
+                                android:backgroundTint="@color/melon"
+                                android:id="@+id/btnubi9"/>
 
                         </LinearLayout>
 

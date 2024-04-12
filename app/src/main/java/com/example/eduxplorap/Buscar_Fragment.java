@@ -46,7 +46,8 @@ public class Buscar_Fragment extends Fragment {
 
     String idCarreraSeleccionada;
 
-    Button btnres1;
+    Button btnres1,btnres2,btnres3,btnres4,btnres5,btnres6,btnres7,btnres8,btnres9,
+            btnubi1,btnubi2,btnubi3,btnubi4,btnubi5,btnubi6,btnubi7,btnubi8,btnubi9;
 
     ArrayList<String> idCarrerasList = new ArrayList<>(); // ArrayList para almacenar los idCarrera
 
@@ -95,13 +96,37 @@ public class Buscar_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_buscar_, container, false);
+        // Spinners
         spCarrera = view.findViewById(R.id.spCarrera);
         spMateria = view.findViewById(R.id.spMateria);
+        // Layouts
         llResultados = view.findViewById(R.id.llResultados);
         llResultados2 = view.findViewById(R.id.llResultados2);
+        // TextView
         tveduX = view.findViewById(R.id.tveduX);
         tvResultado = view.findViewById(R.id.tvResultado);
+        // Botones de resultado
         btnres1 = view.findViewById(R.id.btnres1);
+        btnres2 = view.findViewById(R.id.btnres2);
+        btnres3 = view.findViewById(R.id.btnres3);
+        btnres4 = view.findViewById(R.id.btnres4);
+        btnres5 = view.findViewById(R.id.btnres5);
+        btnres6 = view.findViewById(R.id.btnres6);
+        btnres7 = view.findViewById(R.id.btnres7);
+        btnres8 = view.findViewById(R.id.btnres8);
+        btnres9 = view.findViewById(R.id.btnres9);
+
+        // Botones de ubicacion
+        btnubi1 = view.findViewById(R.id.btnubi1);
+        btnubi2 = view.findViewById(R.id.btnubi2);
+        btnubi3 = view.findViewById(R.id.btnubi3);
+        btnubi4 = view.findViewById(R.id.btnubi4);
+        btnubi5 = view.findViewById(R.id.btnubi5);
+        btnubi6 = view.findViewById(R.id.btnubi6);
+        btnubi7 = view.findViewById(R.id.btnubi7);
+        btnubi8 = view.findViewById(R.id.btnubi8);
+        btnubi9 = view.findViewById(R.id.btnubi9);
+
         rq = Volley.newRequestQueue(requireContext());
         carreraSr();
 
