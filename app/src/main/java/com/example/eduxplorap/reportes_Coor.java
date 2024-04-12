@@ -131,7 +131,7 @@ public class reportes_Coor extends Fragment {
         // Agrega un espacio
         addEmptyLine(preface, 1);
         // Agrega un título
-        preface.add(new Paragraph("Reporte"));
+        preface.add(new Paragraph("Reporte General de Visitas Guiadas"));
         addEmptyLine(preface, 1);
         // Agrega una fecha
         preface.add(new Paragraph(new Date().toString()));
@@ -155,6 +155,7 @@ public class reportes_Coor extends Fragment {
                 createPDF();
             } else {
                 // El usuario rechazó los permisos, manejar esta situación según sea necesario
+                Toast.makeText(getActivity(), "Se Rechazo el Acceso", Toast.LENGTH_LONG).show();
             }
         }
     }

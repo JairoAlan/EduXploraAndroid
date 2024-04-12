@@ -148,7 +148,8 @@ public class Buscar_Fragment extends Fragment {
                         adapter.add(nombre);
                         idCarrerasList.add(ID_Carrera); // Agrega el idCarrera al ArrayList
                     } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                        Toast.makeText(getActivity(), "No hay Conexion a la Base de Datos", Toast.LENGTH_LONG).show();
+                        //throw new RuntimeException(e);
                     }
                 }
                 spCarrera.setAdapter(adapter);
@@ -156,8 +157,9 @@ public class Buscar_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No hay Conexion a Internet", Toast.LENGTH_LONG).show();
+                // volleyError.printStackTrace();
+                // Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(requerimento);
@@ -188,15 +190,17 @@ public class Buscar_Fragment extends Fragment {
 
                     spMateria.setAdapter(adapter);
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                    //e.printStackTrace();
+                    spMateria.setAdapter(null);
+                    Toast.makeText(getContext(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_LONG).show();
+                //volleyError.printStackTrace();
+                //Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -232,14 +236,15 @@ public class Buscar_Fragment extends Fragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No hay conexion a internet", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "No hay conexion a internet", Toast.LENGTH_SHORT).show();
+                //volleyError.printStackTrace();
+                //Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
