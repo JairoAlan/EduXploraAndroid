@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -108,10 +109,10 @@
                             android:layout_width="150dp"
                             android:layout_height="35sp"
                             android:layout_gravity="center"
-                            android:background="#f6bb1a"
                             android:text="Reseña"
                             android:textColor="@color/black"
                             android:textSize="15dp"
+                            app:cornerRadius="10dp"
                             android:id="@+id/btnresena"/>
 
                     </LinearLayout>
@@ -181,10 +182,10 @@
                             android:layout_width="150dp"
                             android:layout_height="35sp"
                             android:layout_gravity="center"
-                            android:background="#f6bb1a"
                             android:text="Reseña"
                             android:textColor="@color/black"
                             android:textSize="15dp"
+                            app:cornerRadius="10dp"
                             android:id="@+id/btnresena2"/>
 
                     </LinearLayout>
@@ -253,19 +254,15 @@
                             android:layout_width="150dp"
                             android:layout_height="35sp"
                             android:layout_gravity="center"
-                            android:background="#f6bb1a"
                             android:text="Reseña"
                             android:textColor="@color/black"
                             android:textSize="15dp"
+                            app:cornerRadius="10dp"
                             android:id="@+id/btnresena3"/>
 
                     </LinearLayout>
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </RelativeLayout>
     </ScrollView>
-
 </FrameLayout>

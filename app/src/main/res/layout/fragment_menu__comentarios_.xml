@@ -53,103 +53,75 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginTop="10sp"
-                android:layout_width="390dp"
-                android:layout_height="600dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
                 android:orientation="vertical"
-                android:background="@color/white"
-                >
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/white">
 
 
                 <TextView
-                    android:id="@+id/textViewNombre"
-                    android:layout_width="120dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/titulo_filtro"
+                    android:backgroundTint="@color/teal_700"
+                    android:textAlignment="center"
+                    android:text="Nombre:"/>
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Nombre:"
-                    android:background="#006875"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde"
+                    android:id="@+id/tvNombreComent"/>
                 <TextView
-                    android:layout_width="220dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/border"
-                    android:elevation="1dp"
-
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewNombre" />
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/titulo_filtro"
+                    android:backgroundTint="@color/teal_700"
+                    android:textAlignment="center"
+                    android:text="Correo:"/>
                 <TextView
-                    android:id="@+id/textViewCorreo"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Correo:"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:background="#006875"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde"
+                    android:id="@+id/tvCorreoComent"/>
                 <TextView
-                    android:layout_width="220dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border"
-                    android:elevation="1dp"
-
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/titulo_filtro"
+                    android:backgroundTint="@color/teal_700"
+                    android:textAlignment="center"
+                    android:text="Mensaje:" />
                 <TextView
-                    android:id="@+id/textViewMensaje"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:background="#006875"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Mensaje:"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="320dp"
-                    android:layout_height="210dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/border"
-                    android:elevation="1dp"
-
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewMensaje" />
-
-
+                    android:layout_height="260dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/borde"
+                    android:id="@+id/tvMensajeComent"/>
 
                 <Button
                     android:layout_width="180dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Enviar"
                     android:textSize="35sp"
-                    android:layout_gravity="center"/>
+                    app:cornerRadius="10dp"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/azulMarino"/>
 
             </LinearLayout>
         </LinearLayout>
