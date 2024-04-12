@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -100,16 +101,10 @@ public class reportes_Coor extends Fragment {
                 } else {
                     // Si ya se tienen los permisos, proceder con la creación del PDF
                     createPDF();
-
+                    abrirPDF();
                 }
             }
         });
-
-
-
-
-
-
 
         return view;
     }
@@ -164,6 +159,19 @@ public class reportes_Coor extends Fragment {
         }
     }
 
+    public void abrirPDF() {
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/Reporte.pdf";
+        File file = new File(path);
+
+        // Obtener el URI del archivo utilizando FileProvider
+        Uri fileUri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".provider", file);
+
+        // Crear un intent para abrir el PDF con una aplicación externa
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(fileUri, "application/pdf");
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Agregar permiso de lectura al intent
+        startActivity(intent);
+    }
 
 
 
