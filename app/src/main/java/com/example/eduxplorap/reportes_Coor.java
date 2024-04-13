@@ -22,6 +22,9 @@ import android.widget.Button;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
@@ -118,6 +121,23 @@ public class reportes_Coor extends Fragment {
             PdfWriter.getInstance(doc, fos);
             doc.open();
             addTitlePage(doc);
+            PdfPTable table = new PdfPTable(5); // Crea una tabla con 3 columnas
+
+            // Crea las celdas y agrega contenido
+            PdfPCell cell1 = new PdfPCell(new Phrase("Empresa"));
+            PdfPCell cell2 = new PdfPCell(new Phrase("Grupo"));
+            PdfPCell cell3 = new PdfPCell(new Phrase("Usuario"));
+            PdfPCell cell4 = new PdfPCell(new Phrase("Carrera"));
+            PdfPCell cell5 = new PdfPCell(new Phrase("Estado"));
+
+            // Agrega las celdas a la tabla
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);
+            table.addCell(cell4);
+            table.addCell(cell5);
+
+            doc.add(table);
             doc.close();
             fos.close();
         } catch (Exception e) {
@@ -173,6 +193,7 @@ public class reportes_Coor extends Fragment {
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // Agregar permiso de lectura al intent
         startActivity(intent);
     }
+
 
 
 
