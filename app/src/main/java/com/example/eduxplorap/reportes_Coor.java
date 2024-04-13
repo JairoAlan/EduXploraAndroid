@@ -19,6 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -29,10 +35,17 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import android.Manifest;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -46,6 +59,8 @@ public class reportes_Coor extends Fragment {
     private static final int REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE = 1;
 
     Button btnRepo_Gen;
+    List<String[]> data = new ArrayList<>();
+    RequestQueue rq;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,7 +106,7 @@ public class reportes_Coor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reportes__coor, container, false);
-
+        rq = Volley.newRequestQueue(requireContext());
         btnRepo_Gen = view.findViewById(R.id.btnRepo_Gen);
 
         btnRepo_Gen.setOnClickListener(new View.OnClickListener() {
@@ -121,25 +136,68 @@ public class reportes_Coor extends Fragment {
             PdfWriter.getInstance(doc, fos);
             doc.open();
             addTitlePage(doc);
-            PdfPTable table = new PdfPTable(5); // Crea una tabla con 3 columnas
 
-            // Crea las celdas y agrega contenido
+            // Crear una tabla con 5 columnas
+            PdfPTable table = new PdfPTable(5);
+
+            // Agregar los encabezados de la tabla
             PdfPCell cell1 = new PdfPCell(new Phrase("Empresa"));
             PdfPCell cell2 = new PdfPCell(new Phrase("Grupo"));
             PdfPCell cell3 = new PdfPCell(new Phrase("Usuario"));
             PdfPCell cell4 = new PdfPCell(new Phrase("Carrera"));
             PdfPCell cell5 = new PdfPCell(new Phrase("Estado"));
 
-            // Agrega las celdas a la tabla
+            // Agregar los encabezados a la tabla
             table.addCell(cell1);
             table.addCell(cell2);
             table.addCell(cell3);
             table.addCell(cell4);
             table.addCell(cell5);
 
-            doc.add(table);
-            doc.close();
-            fos.close();
+            // Obtener los datos del servidor
+            String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
+            JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray jsonArray) {
+                    for(int i=0;i<jsonArray.length();i++){
+                        try {
+                            JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
+                            // Agregar los datos a la tabla
+                            table.addCell(objeto.getString("nombreEmpresa"));
+                            table.addCell(objeto.getString("grupo"));
+                            table.addCell(objeto.getString("nombreUsuario"));
+                            table.addCell(objeto.getString("carrera"));
+                            table.addCell(objeto.getString("estadoActual"));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+                    // Agregar la tabla al documento
+                    try {
+                        doc.add(table);
+                    } catch (DocumentException e) {
+
+                        throw new RuntimeException(e);
+                    }
+
+                    // Cerrar el documento y el flujo de salida
+
+                    try {
+                        doc.close();
+                        fos.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    volleyError.printStackTrace();
+                    Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+            rq.add(requerimento);
         } catch (Exception e) {
             e.printStackTrace();
         }
