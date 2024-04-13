@@ -110,8 +110,9 @@ public class Home_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "No hay Conexion a Internet ", Toast.LENGTH_SHORT).show();
+                //volleyError.printStackTrace();
+                //Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(requerimento);

@@ -95,8 +95,9 @@ public class Buscar_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_buscar_, container, false);
+
         // Spinners
         spCarrera = view.findViewById(R.id.spCarrera);
         spMateria = view.findViewById(R.id.spMateria);
@@ -123,6 +124,7 @@ public class Buscar_Fragment extends Fragment {
         tvResultado8.setMovementMethod(new ScrollingMovementMethod());
         tvResultado9 = view.findViewById(R.id.tvResultado9);
         tvResultado9.setMovementMethod(new ScrollingMovementMethod());
+
         // Botones de resultado
         btnres1 = view.findViewById(R.id.btnres1);
         btnres2 = view.findViewById(R.id.btnres2);
@@ -153,7 +155,6 @@ public class Buscar_Fragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 
                 idCarreraSeleccionada = String.valueOf(position + 1);
-                Log.d("ID_CARRERA_SELECTED", "idCarreraSeleccionada: " + idCarreraSeleccionada);
                 materiaSr();
                 buscar();
             }
@@ -164,7 +165,129 @@ public class Buscar_Fragment extends Fragment {
             }
         });
 
+        // BOTONES DE SOLICITAR
         btnres1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnres9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        // BOTONES DE UBICACION
+
+        btnubi1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnubi9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -279,7 +402,7 @@ public class Buscar_Fragment extends Fragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getContext(), "No hay conexion a internet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No hay respuesta a lo solicitado de la Base de Datos", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
