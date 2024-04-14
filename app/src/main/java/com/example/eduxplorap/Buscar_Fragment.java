@@ -3,6 +3,8 @@ package com.example.eduxplorap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -30,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -169,63 +172,63 @@ public class Buscar_Fragment extends Fragment {
         btnres1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
         btnres9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                replaceFragment(new Fragment_pop_up());
             }
         });
 
@@ -415,6 +418,13 @@ public class Buscar_Fragment extends Fragment {
         });
 
         rq.add(requerimento3);
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.commit();
     }
 
 // Fin
