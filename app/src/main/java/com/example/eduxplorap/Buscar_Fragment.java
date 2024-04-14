@@ -420,6 +420,7 @@ public class Buscar_Fragment extends Fragment {
         rq.add(requerimento3);
     }
 
+    // Funcion para enviar a un "Fragment"
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

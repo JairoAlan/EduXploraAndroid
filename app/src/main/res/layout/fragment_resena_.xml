@@ -6,55 +6,276 @@
     tools:context=".Resena_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#042363 ">
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/escr"
-            android:id="@+id/ImgEscr"/>
-
-        <TextView
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="380dp"
+        android:layout_gravity="center"
+        android:layout_height="720dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="57dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ImgEscr"
-            android:layout_margin="20dp"
-            android:text="Reseña de Visita Guiada"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="#e8e8e9"
-            android:id="@+id/tvResena"/>
+            android:layout_height="match_parent"
+            android:background="#767FA7"
+            android:orientation="vertical"
+            tools:context=".activity_pop_up_res">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvResena"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:paddingBottom="150dp"
-            android:hint="Escribe tu reseña aqui"
-            android:background="#e8e8e9"
-            android:id="@+id/etResena"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/mesita"
+                android:layout_height="200dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etResena"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="50dp"
-            android:background="#e8e8e9"
-            android:text="Enviar"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#e8e8e9"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_margin="15dp"
+                android:text="Reseña de Visita Guiada"
+                android:textColor="@color/black"
+                android:textSize="33dp" />
 
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_width="390dp"
+                android:layout_height="1200dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/textViewNombre"
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="90dp"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:padding="9dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Actividades realizadas en la visita:"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="7dp"
+                    android:id="@+id/etnombre"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewNombre" />
+                <TextView
+                    android:id="@+id/textViewCorreo"
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="90dp"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="¿Se cumplieron los objetivos?"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etobjetivo"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+                <!--?????? "como usuario la busqueda, el registro de una nueva empresa..." ????-->
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:textAlignment="center"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Calificación"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etcalifica"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:textAlignment="center"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Recomendación"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etrecomen"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:textAlignment="center"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Justificación"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etjusti"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:textAlignment="center"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Observaciones:"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etobserva"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_gravity="center"
+                    android:layout_height="50dp"
+                    android:textAlignment="center"
+                    android:background="#F8AB6D"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Añadir a favoritos"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/etfavoritos"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border"
+                    android:elevation="1dp"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewCorreo" />
+
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:text="Enviar"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42052D"
+                    android:id="@+id/btnenviar"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
