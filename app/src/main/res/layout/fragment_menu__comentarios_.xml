@@ -88,7 +88,7 @@
                     android:backgroundTint="@color/teal_700"
                     android:textAlignment="center"
                     android:text="Correo:"/>
-                <TextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -105,7 +105,7 @@
                     android:backgroundTint="@color/teal_700"
                     android:textAlignment="center"
                     android:text="Mensaje:" />
-                <TextView
+                <EditText
                     android:layout_height="260dp"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="20dp"
@@ -121,7 +121,8 @@
                     android:textSize="35sp"
                     app:cornerRadius="10dp"
                     android:layout_margin="10dp"
-                    android:backgroundTint="@color/azulMarino"/>
+                    android:backgroundTint="@color/azulMarino"
+                    android:id="@+id/btnenviarcoment"/>
 
             </LinearLayout>
         </LinearLayout>

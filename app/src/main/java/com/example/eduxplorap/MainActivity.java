@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new Home_Fragment());
 
-        btnresena = (Button) findViewById(R.id.btnresena);
+        btnresena = (Button) findViewById(R.id.btnresena1);
         btnresena2 = (Button) findViewById(R.id.btnresena2);
         btnresena3 = (Button) findViewById(R.id.btnresena3);
         drawerLayout = findViewById(R.id.drawerLayout);
