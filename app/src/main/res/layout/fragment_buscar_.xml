@@ -102,6 +102,7 @@
                             android:background="@drawable/iconoeduxt"
                             android:layout_margin="10dp"
                             android:id="@+id/tveduX"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

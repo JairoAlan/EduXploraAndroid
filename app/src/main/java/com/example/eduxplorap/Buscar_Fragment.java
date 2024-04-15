@@ -1,5 +1,7 @@
 package com.example.eduxplorap;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -43,12 +45,19 @@ public class Buscar_Fragment extends Fragment {
 
     TextView tveduX,tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5;
     TextView tvResultado6, tvResultado7, tvResultado8, tvResultado9;
+
+    String tvlatitud,tvlatitud1,tvlatitud2,tvlatitud3,tvlatitud4,tvlatitud5,tvlatitud6,tvlatitud7,tvlatitud8,tvlatitud9;
+    String tvlongitud,tvlongitud1,tvlongitud2,tvlongitud3,tvlongitud4,tvlongitud5,tvlongitud6,tvlongitud7,tvlongitud8,tvlongitud9;
+
     LinearLayout llResultados,llResultados2;
     Spinner spCarrera, spMateria;
 
     RequestQueue rq;
 
     String idCarreraSeleccionada;
+
+    String Unilatitud = "20.1352722";
+    String Unilongitud = "-98.383043";
 
     Button btnres1,btnres2,btnres3,btnres4,btnres5,btnres6,btnres7,btnres8,btnres9,
             btnubi1,btnubi2,btnubi3,btnubi4,btnubi5,btnubi6,btnubi7,btnubi8,btnubi9;
@@ -237,13 +246,22 @@ public class Buscar_Fragment extends Fragment {
         btnubi1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
+                }
             }
         });
 
         btnubi2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
+                }
 
             }
         });
@@ -251,6 +269,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
+                }
 
             }
         });
@@ -258,6 +281,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
+                }
 
             }
         });
@@ -265,6 +293,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
+                }
 
             }
         });
@@ -272,6 +305,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
+                }
 
             }
         });
@@ -279,6 +317,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
+                }
 
             }
         });
@@ -286,6 +329,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
+                }
 
             }
         });
@@ -293,6 +341,11 @@ public class Buscar_Fragment extends Fragment {
         btnubi9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+                }else {
+                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
+                }
 
             }
         });
@@ -377,6 +430,9 @@ public class Buscar_Fragment extends Fragment {
 
     public void buscar() {
         final TextView[] textViews = {tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5, tvResultado6, tvResultado7, tvResultado8, tvResultado9};
+        final String[] latitudes = {tvlatitud,tvlatitud1,tvlatitud2,tvlatitud3,tvlatitud4,tvlatitud5,tvlatitud6,tvlatitud7,tvlatitud8,tvlatitud9};
+        final String[] longitudes = {tvlongitud,tvlongitud1,tvlongitud2,tvlongitud3,tvlongitud4,tvlongitud5,tvlongitud6,tvlongitud7,tvlongitud8,tvlongitud9};
+
         String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
 
         JsonObjectRequest requerimento3 = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
@@ -396,6 +452,8 @@ public class Buscar_Fragment extends Fragment {
                             textViews[i].append("Nombre: " + empresaObject.getString("Nombre"));
                             textViews[i].append("URL: " + empresaObject.getString("Contacto"));
                             textViews[i].append("Descripcion: " + empresaObject.getString("Descripcion"));
+                            latitudes[i] = empresaObject.getString("latitud");
+                            longitudes[i] = empresaObject.getString("longitud");
                         }
                     } else {
                         // No hay materias registradas para la carrera proporcionada
@@ -427,6 +485,13 @@ public class Buscar_Fragment extends Fragment {
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
+    public void direcccionEntreDosPuntos(String puntoUnolatitud, String puntoUnolongitud, String destinoLatitud, String destinoLongitud){
+        Uri mapUri = Uri.parse("https://maps.google.com/maps?saddr="+puntoUnolatitud+","+puntoUnolongitud+"&daddr="+destinoLatitud+","+destinoLongitud);
+        Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
+        startActivity(intent);
+    }
+
 
 // Fin
 }
