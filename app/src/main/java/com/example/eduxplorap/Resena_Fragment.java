@@ -7,6 +7,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +28,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Resena_Fragment extends Fragment {
+
+    TextView tvActividad, tvObjetivos, tvCalificacion, tvRecomendacion, tvJustificacion, tvObservaciones;
+    Button btnGuardar;
+    String Favoritos="Si";
+    String Nombre="Dra. Gabriela Araujo | IMATE Juriquilla", grupo="ISC73";
+
+    RequestQueue rq;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +80,60 @@ public class Resena_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_resena_, container, false);
+        View view = inflater.inflate(R.layout.fragment_resena_, container, false);
+        tvActividad = view.findViewById(R.id.tvActividad);
+        tvObjetivos = view.findViewById(R.id.tvObjetivos);
+        tvCalificacion = view.findViewById(R.id.tvCalificacion);
+        tvRecomendacion = view.findViewById(R.id.tvRecomendacion);
+        tvJustificacion = view.findViewById(R.id.tvJustificacion);
+        tvObservaciones = view.findViewById(R.id.tvObservaciones);
+        btnGuardar = view.findViewById(R.id.btnGuardar);
+
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GuardarResenia();
+                regresarAevaluar();
+            }
+        });
+
+        return view;
     }
+
+    public void GuardarResenia(){
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/Resenia.php";
+        JSONObject object = new JSONObject();
+        try {
+            object.put("Nombre",Nombre);
+            object.put("grupo",grupo);
+            object.put("Actividades",tvActividad.getText());
+            object.put("Objetivos",tvObjetivos.getText());
+            object.put("Calificacion",tvCalificacion.getText());
+            object.put("Recomendacion",tvRecomendacion.getText());
+            object.put("Justificacion",tvJustificacion.getText());
+            object.put("Observacion",tvObservaciones.getText());
+            object.put("Favoritos",Favoritos);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        JsonObjectRequest jasonObjtRequest = new JsonObjectRequest(Request.Method.POST, url, object, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Toast.makeText(getContext(), "La reseña se guardo correctamente", Toast.LENGTH_SHORT).show();
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(getContext(), "Error al guardar la reseña", Toast.LENGTH_SHORT).show();
+            }
+        });
+            rq.add(jasonObjtRequest);
+        }
+    public void regresarAevaluar() {
+
+    }
+
 }
+

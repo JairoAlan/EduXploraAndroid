@@ -75,50 +75,18 @@
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="10dp"
-                            android:id="@+id/tvNombre"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Descripción:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDescripcion"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dirección:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDireccion"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="URL:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvURL"/>
-
-                        <Button
-                            android:layout_width="150dp"
-                            android:layout_height="35sp"
-                            android:layout_gravity="center"
-                            android:text="Reseña"
-                            android:textColor="@color/black"
-                            android:textSize="15dp"
-                            app:cornerRadius="10dp"
-                            android:id="@+id/btnresena"/>
-
+                            android:id="@+id/tvNombreR"/>
                     </LinearLayout>
-
-
                 </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Reseña"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:cornerRadius="10dp"
+                    android:id="@+id/btnresena"/>
 
                 <LinearLayout
                     android:layout_width="350sp"
@@ -148,49 +116,19 @@
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="10dp"
-                            android:id="@+id/tvNombre2"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Descripción:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDescripcion2"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dirección:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDireccion2"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="URL:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvURL2"/>
-
-                        <Button
-                            android:layout_width="150dp"
-                            android:layout_height="35sp"
-                            android:layout_gravity="center"
-                            android:text="Reseña"
-                            android:textColor="@color/black"
-                            android:textSize="15dp"
-                            app:cornerRadius="10dp"
-                            android:id="@+id/btnresena2"/>
-
+                            android:id="@+id/tvNombreR2"/>
                     </LinearLayout>
 
                 </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Reseña"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:cornerRadius="10dp"
+                    android:id="@+id/btnresena2"/>
 
                 <LinearLayout
                     android:layout_width="350sp"
@@ -220,48 +158,60 @@
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="10dp"
-                            android:id="@+id/tvNombre3"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Descripción:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDescripcion3"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dirección:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvDireccion3"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="URL:"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dp"
-                            android:id="@+id/tvURL3"/>
-
-                        <Button
-                            android:layout_width="150dp"
-                            android:layout_height="35sp"
-                            android:layout_gravity="center"
-                            android:text="Reseña"
-                            android:textColor="@color/black"
-                            android:textSize="15dp"
-                            app:cornerRadius="10dp"
-                            android:id="@+id/btnresena3"/>
+                            android:id="@+id/tvNombreR3"/>
 
                     </LinearLayout>
                 </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Reseña"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:cornerRadius="10dp"
+                    android:id="@+id/btnresena3"/>
+                <LinearLayout
+                    android:layout_width="350sp"
+                    android:layout_height="140sp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:backgroundTint="@color/Grisazuladoclaro"
+                    android:background="@drawable/borde">
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="85dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/ch"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre:"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/tvNombreR4"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Reseña"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:cornerRadius="10dp"
+                    android:id="@+id/btnresena4"/>
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

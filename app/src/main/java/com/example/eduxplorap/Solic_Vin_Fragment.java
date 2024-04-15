@@ -24,16 +24,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.jar.JarException;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SolicCoor_Fragment#newInstance} factory method to
+ * Use the {@link Solic_Vin_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SolicCoor_Fragment extends Fragment {
+public class Solic_Vin_Fragment extends Fragment {
 
     TextView tvTodasSolic, tvTodasSolic2, tvTodasSolic3, tvTodasSolic4;
-    Button btnAceptar1, btnAceptar2, btnAceptar3, btnAceptar4;
-    Button btnCancelar1, btnCancelar2, btnCancelar3, btnCancelar4;
+    Button btnAceptarV1, btnAceptarV2, btnAceptarV3, btnAceptarV4;
+    Button btnCancelarV1, btnCancelarV2, btnCancelarV3, btnCancelarV4;
     final String[] nombresEmpresas = new String[4];
     //        final String[] distancias = new String[4];
     final String[] urls = new String[4];
@@ -49,7 +51,7 @@ public class SolicCoor_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SolicCoor_Fragment() {
+    public Solic_Vin_Fragment() {
         // Required empty public constructor
     }
 
@@ -59,11 +61,11 @@ public class SolicCoor_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SolicCoor_Fragment.
+     * @return A new instance of fragment Solic_Vin_Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SolicCoor_Fragment newInstance(String param1, String param2) {
-        SolicCoor_Fragment fragment = new SolicCoor_Fragment();
+    public static Solic_Vin_Fragment newInstance(String param1, String param2) {
+        Solic_Vin_Fragment fragment = new Solic_Vin_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,68 +86,68 @@ public class SolicCoor_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_solic_coor, container, false);
-        tvTodasSolic = view.findViewById(R.id.tvNombre);
+        View view = inflater.inflate(R.layout.fragment_solic_vin, container, false);
+        tvTodasSolic = view.findViewById(R.id.tvNombreV);
         tvTodasSolic.setMovementMethod(new ScrollingMovementMethod());
-        tvTodasSolic2 = view.findViewById(R.id.tvNombre2);
+        tvTodasSolic2 = view.findViewById(R.id.tvNombreV2);
         tvTodasSolic2.setMovementMethod(new ScrollingMovementMethod());
-        tvTodasSolic3 = view.findViewById(R.id.tvNombre3);
+        tvTodasSolic3 = view.findViewById(R.id.tvNombreV3);
         tvTodasSolic3.setMovementMethod(new ScrollingMovementMethod());
-        tvTodasSolic4 = view.findViewById(R.id.tvNombre4);
+        tvTodasSolic4 = view.findViewById(R.id.tvNombreV4);
         tvTodasSolic4.setMovementMethod(new ScrollingMovementMethod());
-        btnAceptar1 = view.findViewById(R.id.btnAceptar1);
-        btnAceptar2 = view.findViewById(R.id.btnAceptar2);
-        btnAceptar3 = view.findViewById(R.id.btnAceptar3);
-        btnAceptar4 = view.findViewById(R.id.btnAceptar4);
-        btnCancelar1 = view.findViewById(R.id.btnCancelar1);
-        btnCancelar2 = view.findViewById(R.id.btnCancelar2);
-        btnCancelar3 = view.findViewById(R.id.btnCancelar3);
-        btnCancelar4 = view.findViewById(R.id.btnCancelar4);
+        btnAceptarV1 = view.findViewById(R.id.btnAceptarV1);
+        btnAceptarV2 = view.findViewById(R.id.btnAceptarV2);
+        btnAceptarV3 = view.findViewById(R.id.btnAceptarV3);
+        btnAceptarV4 = view.findViewById(R.id.btnAceptarV4);
+        btnCancelarV1 = view.findViewById(R.id.btnCancelarV1);
+        btnCancelarV2 = view.findViewById(R.id.btnCancelarV2);
+        btnCancelarV3 = view.findViewById(R.id.btnCancelarV3);
+        btnCancelarV4 = view.findViewById(R.id.btnCancelarV4);
         rq = Volley.newRequestQueue(requireContext());
         mostrar();
-        btnAceptar1.setOnClickListener(new View.OnClickListener() {
+        btnAceptarV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendienteVisita(1);
+                AceptarVisita(1);
             }
         });
-        btnAceptar2.setOnClickListener(new View.OnClickListener() {
+        btnAceptarV2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendienteVisita(2);
+                AceptarVisita(2);
             }
         });
-        btnAceptar3.setOnClickListener(new View.OnClickListener() {
+        btnAceptarV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendienteVisita(3);
+                AceptarVisita(3);
             }
         });
-        btnAceptar4.setOnClickListener(new View.OnClickListener() {
+        btnAceptarV4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendienteVisita(4);
+                AceptarVisita(4);
             }
         });
-        btnCancelar1.setOnClickListener(new View.OnClickListener() {
+        btnCancelarV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(1);
             }
         });
-        btnCancelar2.setOnClickListener(new View.OnClickListener() {
+        btnCancelarV2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(2);
             }
         });
-        btnCancelar3.setOnClickListener(new View.OnClickListener() {
+        btnCancelarV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(3);
             }
         });
-        btnCancelar4.setOnClickListener(new View.OnClickListener() {
+        btnCancelarV4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(4);
@@ -157,9 +159,7 @@ public class SolicCoor_Fragment extends Fragment {
 
     public void mostrar(){
         final TextView[] textViews = {tvTodasSolic, tvTodasSolic2, tvTodasSolic3, tvTodasSolic4};
-
-
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/TraerSolicitudes.php";
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/TraerSolicitudesVin.php";
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
@@ -167,7 +167,7 @@ public class SolicCoor_Fragment extends Fragment {
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
                         textViews[i].append("Empresa: "+ objeto.getString("nombreEmpresa")+"\n");
-//                        textViews[i].append("Distancia: "+"\n");
+                        textViews[i].append("Distancia: "+"\n");
                         textViews[i].append("Url: "+ objeto.getString("Contacto")+"\n");
                         textViews[i].append("\n");
                         textViews[i].append("Grupo: "+ objeto.getString("grupo")+"\n");
@@ -191,6 +191,7 @@ public class SolicCoor_Fragment extends Fragment {
         });
         rq.add(requerimento);
     }
+
     public void CancelarVisita(int num){
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoRechazado.php";
         JSONObject object = new JSONObject();
@@ -215,8 +216,8 @@ public class SolicCoor_Fragment extends Fragment {
         rq.add(jasonObjtRequest);
     }
 
-    public void PendienteVisita(int num){
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoPendiente.php";
+    public void AceptarVisita(int num){
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoAceptado.php";
         JSONObject object = new JSONObject();
         try {
             object.put("Nombre",nombresEmpresas[num]);

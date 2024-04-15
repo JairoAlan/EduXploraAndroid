@@ -1,60 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Resena_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#042363 ">
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/escr"
-            android:id="@+id/ImgEscr"/>
-
-        <TextView
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ImgEscr"
-            android:layout_margin="20dp"
-            android:text="Reseña de Visita Guiada"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="#e8e8e9"
-            android:id="@+id/tvResena"/>
+            android:layout_height="match_parent"
+            android:background="#042363 ">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvResena"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:paddingBottom="150dp"
-            android:hint="Escribe tu reseña aqui"
-            android:background="#e8e8e9"
-            android:id="@+id/etResena"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/escr"
+                android:id="@+id/ImgEscr"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etResena"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="50dp"
-            android:background="#e8e8e9"
-            android:text="Enviar"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#e8e8e9"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ImgEscr"
+                android:layout_margin="20dp"
+                android:text="Evaluación de Visita Guiada"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#e8e8e9"
+                android:id="@+id/tvResena"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvResena"
+                android:background="@drawable/titulo_filtro"
+                android:backgroundTint="@color/melon"
+                android:textAlignment="center"
+                android:text="¿Qué actividades realizó en la visita?"
+                android:id="@+id/tvActividadT"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvActividadT"
+                android:background="@drawable/borde"
+                android:id="@+id/tvActividad"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvActividad"
+                android:background="@drawable/titulo_filtro"
+                android:backgroundTint="@color/melon"
+                android:textAlignment="center"
+                android:text="¿Se cumplieron los objetivos de su visita?"
+                android:id="@+id/tvObjetivosT"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvObjetivosT"
+                android:background="@drawable/borde"
+                android:id="@+id/tvObjetivos"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvObjetivos"
+                android:id="@+id/lla">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/material_motion_duration_long_1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/titulo_filtro"
+                        android:backgroundTint="@color/melon"
+                        android:textAlignment="center"
+                        android:text="¿Como califica su visita?"
+                        android:id="@+id/tvCalificacionT"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_below="@+id/tvCalificacionT"
+                        android:background="@drawable/borde"
+                        android:id="@+id/tvCalificacion"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/material_motion_duration_long_1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="0dp"
+                        android:background="@drawable/titulo_filtro"
+                        android:backgroundTint="@color/melon"
+                        android:textAlignment="center"
+                        android:text="¿Recomendaria su visita?"
+                        android:id="@+id/tvRecomendacionT"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_below="@+id/tvRecomendacionT"
+                        android:background="@drawable/borde"
+                        android:id="@+id/tvRecomendacion"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/lla"
+                android:background="@drawable/titulo_filtro"
+                android:backgroundTint="@color/melon"
+                android:textAlignment="center"
+                android:text="Justifique sus afirmaciones"
+                android:id="@+id/tvJustificacionT"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvJustificacionT"
+                android:background="@drawable/borde"
+                android:id="@+id/tvJustificacion"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvJustificacion"
+                android:background="@drawable/titulo_filtro"
+                android:backgroundTint="@color/melon"
+                android:textAlignment="center"
+                android:text="Justifique sus afirmaciones"
+                android:id="@+id/tvObservacionesT"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/tvObservacionesT"
+                android:background="@drawable/borde"
+                android:id="@+id/tvObservaciones"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvObservaciones"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/melon"
+                android:text="GUARDAR RESEÑA"
+                android:textColor="@color/black"
+                android:id="@+id/btnGuardar"/>
 
-    </RelativeLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </FrameLayout>
