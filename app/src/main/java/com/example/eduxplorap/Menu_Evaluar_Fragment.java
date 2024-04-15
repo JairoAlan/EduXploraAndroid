@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -97,25 +99,25 @@ public class Menu_Evaluar_Fragment extends Fragment {
         btnresena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iraEvaluar();
+                iraEvaluar(new Resena_Fragment());
             }
         });
         btnresena2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iraEvaluar();
+                iraEvaluar(new Resena_Fragment());
             }
         });
         btnresena3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iraEvaluar();
+                iraEvaluar(new Resena_Fragment());
             }
         });
         btnresena4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iraEvaluar();
+                iraEvaluar(new Resena_Fragment());
             }
         });
         return view;
@@ -156,7 +158,10 @@ public class Menu_Evaluar_Fragment extends Fragment {
         });
         rq.add(requerimento);
     }
-    public void iraEvaluar(){
-
+    public void iraEvaluar(Fragment fragment){
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.commit();
     }
 }

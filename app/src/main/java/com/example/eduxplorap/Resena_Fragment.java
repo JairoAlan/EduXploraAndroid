@@ -3,6 +3,8 @@ package com.example.eduxplorap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,7 +95,7 @@ public class Resena_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GuardarResenia();
-                regresarAevaluar();
+                regresarAevaluar(new Menu_Evaluar_Fragment());
             }
         });
 
@@ -131,8 +133,11 @@ public class Resena_Fragment extends Fragment {
         });
             rq.add(jasonObjtRequest);
         }
-    public void regresarAevaluar() {
-//necesito añadir el metodo
+    public void regresarAevaluar(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.commit();
     }
 
 }
