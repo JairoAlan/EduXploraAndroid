@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +16,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Fragment_pop_up extends Fragment {
+
+    EditText etGrupo,etCuatri,etAlum,etFecha;
+    Button btnEnviarSoli;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +65,21 @@ public class Fragment_pop_up extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pop_up, container, false);
+
+        etGrupo = view.findViewById(R.id.etGrupo);
+        etCuatri = view.findViewById(R.id.etCuatri);
+        etAlum = view.findViewById(R.id.etAlum);
+        etFecha = view.findViewById(R.id.etFecha);
+
+        btnEnviarSoli = view.findViewById(R.id.btnEnviarSoli);
+
+        btnEnviarSoli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         return view;
     }
 }

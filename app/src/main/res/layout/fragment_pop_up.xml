@@ -44,7 +44,8 @@
                 android:background="@drawable/borde"
                 android:textSize="35dp"
                 android:padding="5dp"
-                android:hint="Grupo"/>
+                android:hint="Grupo"
+                android:id="@+id/etGrupo"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -52,7 +53,8 @@
                 android:background="@drawable/borde"
                 android:textSize="35dp"
                 android:padding="5dp"
-                android:hint="Cuatrimestre"/>
+                android:hint="Cuatrimestre"
+                android:id="@+id/etCuatri"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -60,7 +62,8 @@
                 android:background="@drawable/borde"
                 android:textSize="35dp"
                 android:padding="5dp"
-                android:hint="No. de alumnos"/>
+                android:hint="No. de alumnos"
+                android:id="@+id/etAlum"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -68,7 +71,8 @@
                 android:background="@drawable/borde"
                 android:textSize="35dp"
                 android:padding="5dp"
-                android:hint="Fecha de visita"/>
+                android:hint="Fecha de visita"
+                android:id="@+id/etFecha"/>
 
             <Button
                 android:layout_width="200dp"
@@ -77,7 +81,8 @@
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
                 android:text="Enviar"
-                app:cornerRadius="1sp" />
+                app:cornerRadius="1sp"
+                android:id="@+id/btnEnviarSoli"/>
 
 
         </LinearLayout>
