@@ -81,19 +81,19 @@ public class localizaciongps extends Fragment {
             }
         });
 
-        BtnDireccionUno.setOnClickListener(v-> {
-            latitudUno = "19.3906594";
-            longitudUno = "-99.3084253";
-            direccionActual(latitudUno,longitudUno);
-        });
-
-        BtnDireccionDos.setOnClickListener(v-> {
-            latitud = "20.1352722";
-            longitud = "-98.383043";
-            latitudUno = "19.3906594";
-            longitudUno = "-99.3084253";
-            direcccionEntreDosPuntos(latitud,longitud,latitudUno,longitudUno);
-        });
+//        BtnDireccionUno.setOnClickListener(v-> {
+//            latitudUno = "19.3906594";
+//            longitudUno = "-99.3084253";
+//            direccionActual(latitudUno,longitudUno);
+//        });
+//
+//        BtnDireccionDos.setOnClickListener(v-> {
+//            latitud = "20.1352722";
+//            longitud = "-98.383043";
+//            latitudUno = "19.3906594";
+//            longitudUno = "-99.3084253";
+//            direcccionEntreDosPuntos(latitud,longitud,latitudUno,longitudUno);
+//        });
 
 
         return view;
