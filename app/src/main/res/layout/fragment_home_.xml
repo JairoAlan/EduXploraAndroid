@@ -6,88 +6,95 @@
     tools:context=".Home_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/Img1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/reco"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:id="@+id/Usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Img1"
-            android:layout_marginLeft="15sp"
-            android:text="¡Bienvenido!"
-            android:textSize="35sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/Mensaje"
-            android:layout_below="@+id/Usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15sp"
-            android:text="Conoce nuestras recomendaciones"
-            android:textSize="15sp"/>
-
-        <ImageView
-            android:id="@+id/ivCla"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:layout_below="@+id/Mensaje"
-            android:src="@drawable/cal"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"/>
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="30sp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/Mensaje"
-            android:layout_toRightOf="@+id/ivCla"
-            android:padding="10dp"
-            android:background="@drawable/borde"
-            android:backgroundTint="@color/Grisazuladooscuro"
-            android:id="@+id/tvUno"/>
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="10sp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/tvUno"
-            android:layout_toRightOf="@+id/ivCla"
-            android:padding="10dp"
-            android:background="@drawable/borde"
-            android:backgroundTint="@color/Grisazuladooscuro"
-            android:id="@+id/tvDos"/>
+            <ImageView
+                android:id="@+id/Img1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/reco"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="10sp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/tvDos"
-            android:layout_toRightOf="@+id/ivCla"
-            android:padding="10dp"
-            android:background="@drawable/borde"
-            android:backgroundTint="@color/Grisazuladooscuro"
-            android:id="@+id/tvTres"/>
+            <TextView
+                android:id="@+id/Usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Img1"
+                android:layout_marginLeft="15sp"
+                android:text="¡Bienvenido!"
+                android:textSize="35sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/Mensaje"
+                android:layout_below="@+id/Usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15sp"
+                android:text="Conoce nuestras recomendaciones"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:id="@+id/ivCla"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_below="@+id/Mensaje"
+                android:src="@drawable/cal"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/Mensaje"
+                android:layout_toRightOf="@+id/ivCla"
+                android:padding="10dp"
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/Grisazuladooscuro"
+                android:id="@+id/tvUno"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/tvUno"
+                android:layout_toRightOf="@+id/ivCla"
+                android:padding="10dp"
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/Grisazuladooscuro"
+                android:id="@+id/tvDos"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/tvDos"
+                android:layout_toRightOf="@+id/ivCla"
+                android:padding="10dp"
+                android:background="@drawable/borde"
+                android:backgroundTint="@color/Grisazuladooscuro"
+                android:id="@+id/tvTres"/>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+
+    </ScrollView>
+
 
 </FrameLayout>
