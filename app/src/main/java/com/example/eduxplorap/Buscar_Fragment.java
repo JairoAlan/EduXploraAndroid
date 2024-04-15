@@ -246,22 +246,25 @@ public class Buscar_Fragment extends Fragment {
         btnubi1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
-                }
+
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
+//                }
             }
         });
 
         btnubi2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
-                }
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
+//                }
 
             }
         });
@@ -269,11 +272,13 @@ public class Buscar_Fragment extends Fragment {
         btnubi3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
-                }
+
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
+//                }
 
             }
         });
@@ -281,11 +286,12 @@ public class Buscar_Fragment extends Fragment {
         btnubi4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
-                }
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
+//                }
 
             }
         });
@@ -293,11 +299,12 @@ public class Buscar_Fragment extends Fragment {
         btnubi5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
-                }
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
+//                }
 
             }
         });
@@ -305,11 +312,12 @@ public class Buscar_Fragment extends Fragment {
         btnubi6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
-                }
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
+//                }
 
             }
         });
@@ -317,11 +325,13 @@ public class Buscar_Fragment extends Fragment {
         btnubi7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
-                }
+
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
+//                }
 
             }
         });
@@ -329,11 +339,12 @@ public class Buscar_Fragment extends Fragment {
         btnubi8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
-                }
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
+//                }
 
             }
         });
@@ -341,11 +352,13 @@ public class Buscar_Fragment extends Fragment {
         btnubi9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-                }else {
-                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
-                }
+
+                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
+//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
+//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
+//                }
 
             }
         });
