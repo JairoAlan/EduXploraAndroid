@@ -21,7 +21,7 @@ public class localizaciongps extends Fragment {
 
     MaterialButton BtnpinLocacion,BtnDireccionUno,BtnDireccionDos;
 
-    String latitud,longitud,latitudUno, longitudUno, latitudDos, longitudDos;
+    String latitud,longitud,latitudUno, longitudUno;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
