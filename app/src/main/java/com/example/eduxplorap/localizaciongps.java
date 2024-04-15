@@ -69,8 +69,8 @@ public class localizaciongps extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_localizaciongps, container, false);
         BtnpinLocacion = view.findViewById(R.id.BtnpinLocacion);
-        BtnDireccionUno = view.findViewById(R.id.BtnDireccionUno);
-        BtnDireccionDos = view.findViewById(R.id.BtnDireccionDos);
+//        BtnDireccionUno = view.findViewById(R.id.BtnDireccionUno);
+//        BtnDireccionDos = view.findViewById(R.id.BtnDireccionDos);
 
         BtnpinLocacion.setOnClickListener(new View.OnClickListener() {
             @Override

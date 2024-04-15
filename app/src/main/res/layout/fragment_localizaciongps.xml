@@ -20,35 +20,43 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pin a la UPT especifica en el mapa desde mi ubicacion"/>
+            android:text="¿Te Perdiste? Haz:"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Pin a la UPT desde mi ubicacion"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/BtnpinLocacion"
-            android:text="Pin a la UPT"/>
+            android:textSize="25sp"
+            android:text="Pin"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Abrir una direccion desde la ubicacion del usuario"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Abrir una direccion desde la ubicacion del usuario"/>-->
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/BtnDireccionUno"
-            android:text="Al destino"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/BtnDireccionUno"-->
+<!--            android:text="Al destino"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Abrir direccion entre la Upt al destino"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Abrir direccion entre la Upt al destino"/>-->
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/BtnDireccionDos"
-            android:text="Desde UPT al destino"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/BtnDireccionDos"-->
+<!--            android:text="Desde UPT al destino"/>-->
 
     </LinearLayout>
 
