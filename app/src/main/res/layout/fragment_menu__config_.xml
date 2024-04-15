@@ -5,85 +5,89 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Menu_Config_Fragment">
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#42052D"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="260dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:text="Configuración"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="40dp" />
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:text="Personaliza tu aplicación"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:layout_margin="10dp"
-                android:padding="20dp"
-                android:background="@drawable/borde"
-                android:backgroundTint="@color/white"
+                android:layout_height="match_parent"
+                android:background="#42052D"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:text="Configuración"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="40dp" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/borde"
-                    android:backgroundTint="@color/teal_700"
-                    android:text="¿Con que paleta de colores deseas usar EduXplora?"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:text="Personaliza tu aplicación"
                     android:textAlignment="center"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:textColor="@color/white" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/borde">
-                    <RadioGroup
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    android:background="@drawable/borde"
+                    android:backgroundTint="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <RadioButton
+                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/borde"
+                        android:backgroundTint="@color/teal_700"
+                        android:text="¿Con que paleta de colores deseas usar EduXplora?"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textAlignment="center"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borde">
+                        <RadioGroup
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="Colores"/>
-                        <RadioButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="Escala de Grises"/>
+                            android:orientation="vertical">
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:text="Colores"/>
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:text="Escala de Grises"/>
 
-                    </RadioGroup>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="260dp"
+                        android:text="APLICAR CAMBIOS"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/melon"/>
                 </LinearLayout>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="APLICAR CAMBIOS"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:backgroundTint="@color/melon"/>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
+
 </FrameLayout>
