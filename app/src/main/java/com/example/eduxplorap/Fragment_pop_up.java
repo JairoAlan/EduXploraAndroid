@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +77,12 @@ public class Fragment_pop_up extends Fragment {
         btnEnviarSoli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(etGrupo.getText().equals(null) && etCuatri.getText().equals(null) && etAlum.getText().equals(null) && etFecha.getText().equals(null)){
+                    Toast.makeText(getContext(), " Todos los campos son requeridos ", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), " Enviado ", Toast.LENGTH_SHORT).show();
+                }
+//                Toast.makeText(getContext(), " Enviado ", Toast.LENGTH_SHORT).show();
             }
         });
 

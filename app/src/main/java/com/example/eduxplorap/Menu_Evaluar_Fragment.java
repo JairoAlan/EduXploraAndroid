@@ -20,6 +20,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,10 +92,12 @@ public class Menu_Evaluar_Fragment extends Fragment {
         tvNombreR3.setMovementMethod(new ScrollingMovementMethod());
         tvNombreR4 = view.findViewById(R.id.tvNombreR4);
         tvNombreR4.setMovementMethod(new ScrollingMovementMethod());
-        btnresena = view.findViewById(R.id.btnresena);
+        btnresena = view.findViewById(R.id.btnresena1);
         btnresena2 = view.findViewById(R.id.btnresena2);
         btnresena3 = view.findViewById(R.id.btnresena3);
         btnresena4 = view.findViewById(R.id.btnresena4);
+
+        rq = Volley.newRequestQueue(getContext()); // Inicializar RequestQueue
         mostrar();
         btnresena.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,8 +155,8 @@ public class Menu_Evaluar_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+//                volleyError.printStackTrace();
+//                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(requerimento);

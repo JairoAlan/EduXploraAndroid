@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="Filtra y encuentra la mejor oppción"
+                    android:text="Filtra y encuentra la mejor opción"
                     android:textColor="@color/grey" />
 
                 <TextView
