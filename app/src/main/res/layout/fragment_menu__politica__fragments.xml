@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="88dp"
-                android:text="Politica de seguridad"
+                android:text="Política de seguridad"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25dp"
@@ -101,7 +101,7 @@
                         android:layout_gravity="center"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:text="Última actualización: 16 de Febrero 2024 EduXplora se compromete a proteger la privacidad de sus usuarios. Esta Política de  Privacidad describe cómo recopilamos, usamos y compartimos información personal cuando utilizas nuestra aplicación móvil EduXplora (en adelante, la Aplicación). Al utilizar la Aplicación, aceptas la recopilación y el uso de información de acuerdo con esta política."/>
+                        android:text="Última actualización: 16 de febrero 2024 EduXplora se compromete a proteger la privacidad de sus usuarios. Esta Política de Privacidad describe cómo recopilamos, usamos y compartimos información personal cuando utilizas nuestra aplicación móvil EduXplora (en adelante, la Aplicación). Al utilizar la Aplicación, aceptas la recopilación y el uso de información de acuerdo con esta política."/>
 
                 </LinearLayout>
 

@@ -22,7 +22,7 @@
 
         <item
             android:id="@+id/iPoli"
-            android:title="Politica de Seguridad"
+            android:title="Política de Seguridad"
             android:icon="@drawable/shield_"/>
 
         <item android:title="">

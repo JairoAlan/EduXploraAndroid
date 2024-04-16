@@ -32,7 +32,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plataforma de busqueda inteligente"
+                    android:text="Plataforma de búsqueda inteligente"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp"/>
