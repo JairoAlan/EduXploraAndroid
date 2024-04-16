@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.eduxplorap.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -58,11 +59,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding.bottomNavigationView.setOnItemSelectedListener(item ->{
-
+            Intent intent = getIntent();
+            String usuarioRol = intent.getStringExtra("ROL_USUARIO");
             if(item.getItemId() == R.id.ihome){
                 replaceFragment(new Home_Fragment());
             }else if(item.getItemId() == R.id.icheck){
-                replaceFragment(new Solicitud_Fragment());
+                if ("docente".equals(usuarioRol)) {
+                    replaceFragment(new Solicitud_Fragment());
+                } else if ("coordinador".equals(usuarioRol)) {
+                    replaceFragment(new SolicCoor_Fragment());
+                } else if ("vinculador".equals(usuarioRol)) {
+                    replaceFragment(new Solic_Vin_Fragment());
+                } else {
+                    Toast.makeText(this, "No Tienes ningun Rol, contacta con el Admin", Toast.LENGTH_SHORT).show();
+                }
+                // replaceFragment(new SolicCoor_Fragment());
             }else if(item.getItemId() == R.id.isearch){
                 replaceFragment(new Buscar_Fragment());
             }
