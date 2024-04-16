@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     ActivityMainBinding binding;
+    private int idUsuario;
 
 
     @Override
@@ -56,11 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 R.string.drawer_close,R.string.drawer_open);
 
         drawerLayout.addDrawerListener(toogle);
+        //Intent intent = getIntent();
+        //String rolUsuario = intent.getStringExtra("ROL_USUARIO");
+        //idUsuario = intent.getIntExtra("ID_USUARIO", 0);
 
-
+        Intent intent = getIntent();
+        String usuarioRol = intent.getStringExtra("ROL_USUARIO");
+        idUsuario = intent.getIntExtra("ID_USUARIO", 0);
         binding.bottomNavigationView.setOnItemSelectedListener(item ->{
-            Intent intent = getIntent();
-            String usuarioRol = intent.getStringExtra("ROL_USUARIO");
+
             if(item.getItemId() == R.id.ihome){
                 replaceFragment(new Home_Fragment());
             }else if(item.getItemId() == R.id.icheck){
@@ -107,7 +112,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(item.getItemId() == R.id.iComen)
             {
-                replaceFragment(new Menu_Comentarios_Fragment());
+                Menu_Comentarios_Fragment fragment = new Menu_Comentarios_Fragment();
+
+                // Crear un bundle para pasar el idUsuario al fragmento
+                Bundle bundle = new Bundle();
+                bundle.putInt("ID_USUARIO", idUsuario); // Pasar el idUsuario al bundle
+                fragment.setArguments(bundle);
+
+                replaceFragment(fragment);
             }
             else if(item.getItemId() == R.id.iConfig)
             {
