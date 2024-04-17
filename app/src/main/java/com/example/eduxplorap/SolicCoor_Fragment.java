@@ -107,48 +107,56 @@ public class SolicCoor_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PendienteVisita(1);
+                btnCancelar1.setEnabled(false);
             }
         });
         btnAceptar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PendienteVisita(2);
+                btnCancelar2.setEnabled(false);
             }
         });
         btnAceptar3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PendienteVisita(3);
+                btnCancelar3.setEnabled(false);
             }
         });
         btnAceptar4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PendienteVisita(4);
+                btnCancelar4.setEnabled(false);
             }
         });
         btnCancelar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(1);
+                btnAceptar1.setEnabled(false);
             }
         });
         btnCancelar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(2);
+                btnAceptar2.setEnabled(false);
             }
         });
         btnCancelar3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(3);
+                btnAceptar3.setEnabled(false);
             }
         });
         btnCancelar4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(4);
+                btnAceptar4.setEnabled(false);
             }
         });
         // Inflate the layout for this fragment

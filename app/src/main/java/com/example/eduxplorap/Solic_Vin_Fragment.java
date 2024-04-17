@@ -109,48 +109,56 @@ public class Solic_Vin_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AceptarVisita(1);
+                btnCancelarV1.setEnabled(false);
             }
         });
         btnAceptarV2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AceptarVisita(2);
+                btnCancelarV2.setEnabled(false);
             }
         });
         btnAceptarV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AceptarVisita(3);
+                btnCancelarV3.setEnabled(false);
             }
         });
         btnAceptarV4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AceptarVisita(4);
+                btnCancelarV4.setEnabled(false);
             }
         });
         btnCancelarV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(1);
+                btnAceptarV1.setEnabled(false);
             }
         });
         btnCancelarV2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(2);
+                btnAceptarV2.setEnabled(false);
             }
         });
         btnCancelarV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(3);
+                btnAceptarV3.setEnabled(false);
             }
         });
         btnCancelarV4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CancelarVisita(4);
+                btnAceptarV4.setEnabled(false);
             }
         });
         // Inflate the layout for this fragment

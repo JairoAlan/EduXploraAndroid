@@ -215,7 +215,7 @@ public class reportes_Coor extends Fragment {
         // Agrega un espacio
         addEmptyLine(preface, 1);
         // Agrega un título
-        preface.add(new Paragraph("Reporte General de Visitas Guiadas"));
+        preface.add(new Paragraph("Reporte General de Visitas Guiadas de la Universidad Politécnica de Tulancingo"));
         addEmptyLine(preface, 1);
         // Agrega una fecha
         preface.add(new Paragraph(new Date().toString()));
