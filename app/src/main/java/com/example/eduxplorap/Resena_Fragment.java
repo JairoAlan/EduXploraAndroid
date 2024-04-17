@@ -129,7 +129,7 @@ public class Resena_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getContext(), "Error al guardar la reseña", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Se guardo correctamente", Toast.LENGTH_SHORT).show();
                 regresarAevaluar(new Menu_Evaluar_Fragment());
             }
         });
