@@ -163,7 +163,8 @@ public class SolicCoor_Fragment extends Fragment {
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
-                for(int i = 0; i < 4; i++){
+                int length = Math.min(jsonArray.length(), textViews.length);
+                for(int i = 0; i < length; i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
                         textViews[i].append("Nombre: "+ objeto.getString("nombreEmpresa")+"\n");
@@ -192,14 +193,14 @@ public class SolicCoor_Fragment extends Fragment {
         rq.add(requerimento);
     }
     public void CancelarVisita(int num){
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoRechazado.php";
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoRechazado.php?Nombre="+nombresEmpresas[num-1]+"&grupo="+grupos[num-1];
         JSONObject object = new JSONObject();
-        try {
-            object.put("Nombre",nombresEmpresas[num]);
-            object.put("grupo",grupos[num]);
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            object.put("Nombre",nombresEmpresas[num-1]);
+//            object.put("grupo",grupos[num-1]);
+//        } catch (JSONException e) {
+//            throw new RuntimeException(e);
+//        }
         JsonObjectRequest jasonObjtRequest = new JsonObjectRequest(Request.Method.PUT, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
@@ -209,21 +210,21 @@ public class SolicCoor_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getContext(), "Error al cancelar la solicitud", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "La solicitud ha cancelado", Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(jasonObjtRequest);
     }
 
     public void PendienteVisita(int num){
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoPendiente.php";
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoPendiente.php?Nombre="+nombresEmpresas[num-1]+"&grupo="+grupos[num-1];
         JSONObject object = new JSONObject();
-        try {
-            object.put("Nombre",nombresEmpresas[num]);
-            object.put("grupo",grupos[num]);
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            object.put("Nombre",nombresEmpresas[num-1]);
+//            object.put("grupo",grupos[num-1]);
+//        } catch (JSONException e) {
+//            throw new RuntimeException(e);
+//        }
         JsonObjectRequest jasonObjtRequest = new JsonObjectRequest(Request.Method.PUT, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
@@ -233,7 +234,7 @@ public class SolicCoor_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getContext(), "Error al aceptar la solicitud", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "La solicitud ha sido aceptada", Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(jasonObjtRequest);
