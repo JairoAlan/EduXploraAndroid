@@ -1,21 +1,23 @@
 package com.example.eduxplorap;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,95 +33,54 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link buscar_Coor#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class buscar_Coor extends Fragment {
 
-    TextView tvBus,tvListo,tvBuscar;
-
-    Spinner Sr_uno,Sr_dos;
-
-    Button btnBuscar;
-
+    Spinner spCarrera, spMateria;
+    LinearLayout lresultados;
+    private String rolUsuario = "";
     RequestQueue rq;
-
-    String idCarreraSeleccionada;
+    String Unilatitud = "20.1352722";
+    String Unilongitud = "-98.383043";
 
     ArrayList<String> idCarrerasList = new ArrayList<>(); // ArrayList para almacenar los idCarrera
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public buscar_Coor() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment buscar_Coor.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static buscar_Coor newInstance(String param1, String param2) {
-        buscar_Coor fragment = new buscar_Coor();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_buscar__coor, container, false);
-        tvBus = view.findViewById(R.id.tvBus);
-        tvListo = view.findViewById(R.id.tvListo);
-        Sr_uno = view.findViewById(R.id.Sr_uno);
-        Sr_dos = view.findViewById(R.id.Sr_dos);
-        btnBuscar = view.findViewById(R.id.btnBuscar);
+
+        View view = inflater.inflate(R.layout.fragment_buscar_, container, false);
+
+        // Spinners
+        spCarrera = view.findViewById(R.id.spCarrera);
+        spMateria = view.findViewById(R.id.spMateria);
+        // Layouts
+        lresultados = view.findViewById(R.id.lresultados);
+
         rq = Volley.newRequestQueue(requireContext());
         carreraSr();
+        // Recuperar el idUsuario del Bundle
+        Bundle bundle = getArguments();
+        int idUsuario = 0;
+        String rolUsuario = "";
+        if (bundle != null) {
+            idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
+            rolUsuario = bundle.getString("ROL_USUARIO", "");
+            // Hacer lo que necesites con el idUsuario en el fragmento...
+        }
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscar();
-            }
-        });
 
-        Sr_uno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+        spCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // position es la posición del elemento seleccionado en el Spinner Sr_uno
-                // Puedes usar esta posición para acceder al elemento correspondiente en el ArrayList idCarrerasList
-
-                // Por ejemplo, para obtener el idCarrera en la posición seleccionada:
-                idCarreraSeleccionada = String.valueOf(position + 1);
-                Log.d("ID_CARRERA_SELECTED", "idCarreraSeleccionada: " + idCarreraSeleccionada);
-                materiaSr();
-                // Luego puedes usar este idCarrera según sea necesario en tu lógica
+                String idCarreraSeleccionada = String.valueOf(position + 1);
+                materiaSr(idCarreraSeleccionada);
+                buscar(idCarreraSeleccionada);
             }
 
             @Override
@@ -128,13 +89,10 @@ public class buscar_Coor extends Fragment {
             }
         });
 
-
         return view;
     }
 
-
     public void carreraSr(){
-
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtroc.php";
 
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -146,30 +104,28 @@ public class buscar_Coor extends Fragment {
                     try {
                         JSONObject objeto = jsonArray.getJSONObject(i);
                         String nombre = objeto.getString("nombre");
-                        String idCarrera = objeto.getString("idCarrera");
+                        String ID_Carrera = objeto.getString("ID_Carrera");
                         adapter.add(nombre);
-                        idCarrerasList.add(idCarrera); // Agrega el idCarrera al ArrayList
+                        idCarrerasList.add(ID_Carrera); // Agrega el idCarrera al ArrayList
                     } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                        Toast.makeText(getActivity(), "No hay Conexion a la Base de Datos", Toast.LENGTH_LONG).show();
                     }
                 }
-                Sr_uno.setAdapter(adapter);
+                spCarrera.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No hay Conexion a Internet", Toast.LENGTH_LONG).show();
             }
         });
         rq.add(requerimento);
     }
 
-    public void materiaSr() {
+    public void materiaSr(String idCarreraSeleccionada) {
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera=" + idCarreraSeleccionada;
 
-        String url2 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera="+idCarreraSeleccionada;
-
-        JsonObjectRequest requerimento2 = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest requerimento = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
@@ -188,52 +144,193 @@ public class buscar_Coor extends Fragment {
                         Toast.makeText(getContext(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_SHORT).show();
                     }
 
-                    Sr_dos.setAdapter(adapter);
+                    spMateria.setAdapter(adapter);
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                    spMateria.setAdapter(null);
+                    Toast.makeText(getContext(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_LONG).show();
             }
         });
 
-        rq.add(requerimento2);
+        rq.add(requerimento);
     }
 
-    public void buscar(){
-        String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
+    public void buscar(String idCarreraSeleccionada) {
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria=" + idCarreraSeleccionada;
 
-        JsonArrayRequest requerimento3 = new JsonArrayRequest(Request.Method.GET, url3, null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest requerimento = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray jsonArray) {
+            public void onResponse(JSONObject jsonObject) {
                 try {
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject empresa = jsonArray.getJSONObject(i);
-                        String nombreEmpresa = empresa.getString("Nombre");
-                        // Mostrar el nombre de la empresa en un TextView
-                        tvBuscar.append("Nombre de la empresa: " + nombreEmpresa + "\n");
+                    JSONArray empresasArray = jsonObject.getJSONArray("empresas");
+
+                    if (empresasArray.length() == 0) {
+                        Toast.makeText(getContext(), "No hay Empresas registradas ", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    for (int i = 0; i < empresasArray.length(); i++) {
+                        JSONObject empresaObject = empresasArray.getJSONObject(i);
+
+                        // Obtener el idEmpresa y guardarlo en una variable
+                        int idEmpresa = empresaObject.getInt("idEmpresa");
+
+                        // Crear un nuevo LinearLayout para cada resultado
+                        LinearLayout resultadoLayout = new LinearLayout(requireContext());
+                        LinearLayout.LayoutParams paramsResultadoLayout = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        paramsResultadoLayout.setMargins(20, 20, 20, 20);
+                        resultadoLayout.setLayoutParams(paramsResultadoLayout);
+                        resultadoLayout.setOrientation(LinearLayout.HORIZONTAL);
+                        resultadoLayout.setBackgroundResource(R.drawable.borde);
+                        int colorGrisAzuladoOscuro = ContextCompat.getColor(requireContext(), R.color.Grisazuladooscuro);
+
+// Establecer el color de fondo del LinearLayout
+                        resultadoLayout.setBackgroundColor(colorGrisAzuladoOscuro);
+
+                        // TextView para el ícono
+                        TextView iconoTextView = new TextView(requireContext());
+                        LinearLayout.LayoutParams paramsIcono = new LinearLayout.LayoutParams(230, 230);
+                        paramsIcono.setMargins(10, 10, 10, 10);
+                        iconoTextView.setLayoutParams(paramsIcono);
+                        iconoTextView.setBackgroundResource(R.drawable.iconoeduxt);
+
+                        // LinearLayout para los detalles
+                        LinearLayout detallesLayout = new LinearLayout(requireContext());
+                        LinearLayout.LayoutParams paramsDetallesLayout = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        detallesLayout.setLayoutParams(paramsDetallesLayout);
+                        detallesLayout.setOrientation(LinearLayout.VERTICAL);
+
+                        // TextView para el resultado
+                        TextView resultadoTextView = new TextView(requireContext());
+                        LinearLayout.LayoutParams paramsResultadoTextView = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                350
+                        );
+                        paramsResultadoTextView.setMargins(10, 10, 10, 10);
+                        resultadoTextView.setLayoutParams(paramsResultadoTextView);
+                        resultadoTextView.setBackgroundResource(R.drawable.borde);
+                        resultadoTextView.setTextColor(getResources().getColor(R.color.black));
+                        resultadoTextView.setPadding(5, 5, 5, 5);
+                        resultadoTextView.setText(empresaObject.getString("Nombre") + "\n" +
+                                empresaObject.getString("Contacto") + "\n" +
+                                empresaObject.getString("Descripcion"));
+
+                        // Botón de Solicitar
+                        if ("docente".equals(rolUsuario)) {
+                            // Código para crear y configurar el botón de solicitar
+
+
+                            Button solicitarButton = new Button(requireContext());
+                            LinearLayout.LayoutParams paramsSolicitarButton = new LinearLayout.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    110
+                            );
+                            paramsSolicitarButton.setMargins(10, 10, 10, 10);
+                            solicitarButton.setLayoutParams(paramsSolicitarButton);
+                            solicitarButton.setText("Solicitar");
+                            solicitarButton.setTextSize(17);
+                            solicitarButton.setTextColor(getResources().getColor(R.color.black));
+                            solicitarButton.setBackgroundResource(R.color.melon);
+                            solicitarButton.setBackgroundResource(R.drawable.rounded_button_background);
+
+                            // Configura otros atributos del botón según sea necesario...
+                            solicitarButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(requireContext(), Fragment_pop_up.class);
+                                    // Recuperar el idUsuario del Bundle si es necesario
+                                    Bundle bundle = getArguments();
+                                    int idUsuario = 0;
+                                    if (bundle != null) {
+                                        idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
+                                    }
+                                    // Pasar el idUsuario como extra
+                                    intent.putExtra("ID_USUARIO", idUsuario);
+                                    intent.putExtra("ID_EMPRESA", idEmpresa);
+                                    startActivity(intent);
+                                }
+                            });
+
+                            // Agregar el botón de solicitar al layout adecuado
+                            detallesLayout.addView(solicitarButton);
+                        }
+
+
+
+
+
+
+                        // Botón de Ubicación
+                        Button ubicacionButton = new Button(requireContext());
+                        LinearLayout.LayoutParams paramsUbicacionButton = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                110
+                        );
+                        paramsUbicacionButton.setMargins(10, 10, 10, 10);
+                        ubicacionButton.setLayoutParams(paramsUbicacionButton);
+                        ubicacionButton.setText("Ubicacion");
+                        ubicacionButton.setTextSize(17);
+                        //ubicacionButton.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                        ubicacionButton.setTextColor(getResources().getColor(R.color.black));
+                        ubicacionButton.setBackgroundResource(R.color.melon);
+                        ubicacionButton.setBackgroundResource(R.drawable.rounded_button_background);
+
+                        ubicacionButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                try {
+                                    // Obtener las coordenadas de latitud y longitud del destino
+                                    String destinoLatitud = empresaObject.getString("latitud");
+                                    String destinoLongitud = empresaObject.getString("longitud");
+
+                                    // Llamar a la función para obtener la dirección entre los dos puntos
+                                    direcccionEntreDosPuntos(Unilatitud, Unilongitud, destinoLatitud, destinoLongitud);
+                                } catch (JSONException e) {
+                                    Toast.makeText(getContext(), "No se pudo obtener la ubicación de la empresa", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+
+                        // Agregar vistas al LinearLayout de detalles
+                        detallesLayout.addView(resultadoTextView);
+                        //detallesLayout.addView(solicitarButton);
+                        detallesLayout.addView(ubicacionButton);
+
+                        // Agregar vistas al LinearLayout del resultado
+                        resultadoLayout.addView(iconoTextView);
+                        resultadoLayout.addView(detallesLayout);
+
+                        // Agregar el LinearLayout del resultado al contenedor principal
+                        lresultados.addView(resultadoLayout);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getContext(), "Error al procesar la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No hay respuesta a lo solicitado de la Base de Datos", Toast.LENGTH_SHORT).show();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "No hay conexion a internet", Toast.LENGTH_SHORT).show();
             }
         });
-        rq.add(requerimento3);
+
+        rq.add(requerimento);
     }
-
-
-// Fin
+    public void direcccionEntreDosPuntos(String puntoUnolatitud, String puntoUnolongitud, String destinoLatitud, String destinoLongitud){
+        Uri mapUri = Uri.parse("https://maps.google.com/maps?saddr="+puntoUnolatitud+","+puntoUnolongitud+"&daddr="+destinoLatitud+","+destinoLongitud);
+        Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
+        startActivity(intent);
+    }
 }

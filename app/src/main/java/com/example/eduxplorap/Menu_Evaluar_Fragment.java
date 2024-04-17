@@ -134,10 +134,11 @@ public class Menu_Evaluar_Fragment extends Fragment {
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
-                for(int i = 0; i < 4; i++){
+                int length = Math.min(jsonArray.length(), textViews.length);
+                for(int i = 0; i < length; i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
-                        textViews[i].append("Empresa: "+ objeto.getString("nombreEmpresa")+"\n");
+                        textViews[i].append("Nombre: "+ objeto.getString("nombreEmpresa")+"\n");
 //                        textViews[i].append("Distancia: "+"\n");
                         textViews[i].append("Url: "+ objeto.getString("Contacto")+"\n");
                         textViews[i].append("\n");

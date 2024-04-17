@@ -47,38 +47,38 @@
                 android:textAlignment="center"
                 android:text="¿Qué actividades realizó en la visita?"
                 android:id="@+id/tvActividadT"/>
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/tvActividadT"
                 android:background="@drawable/borde"
-                android:id="@+id/tvActividad"/>
+                android:id="@+id/etActividad"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_below="@+id/tvActividad"
+                android:layout_below="@+id/etActividad"
                 android:background="@drawable/titulo_filtro"
                 android:backgroundTint="@color/melon"
                 android:textAlignment="center"
                 android:text="¿Se cumplieron los objetivos de su visita?"
                 android:id="@+id/tvObjetivosT"/>
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/tvObjetivosT"
                 android:background="@drawable/borde"
-                android:id="@+id/tvObjetivos"/>
+                android:id="@+id/etObjetivos"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvObjetivos"
+                android:layout_below="@+id/etObjetivos"
                 android:id="@+id/lla">
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -95,14 +95,14 @@
                         android:textAlignment="center"
                         android:text="¿Como califica su visita?"
                         android:id="@+id/tvCalificacionT"/>
-                    <TextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="10dp"
                         android:layout_below="@+id/tvCalificacionT"
                         android:background="@drawable/borde"
-                        android:id="@+id/tvCalificacion"/>
+                        android:id="@+id/etCalificacion"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -119,14 +119,14 @@
                         android:textAlignment="center"
                         android:text="¿Recomendaria su visita?"
                         android:id="@+id/tvRecomendacionT"/>
-                    <TextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="20dp"
                         android:layout_below="@+id/tvRecomendacionT"
                         android:background="@drawable/borde"
-                        android:id="@+id/tvRecomendacion"/>
+                        android:id="@+id/etRecomendacion"/>
                 </RelativeLayout>
             </LinearLayout>
             <TextView
@@ -141,38 +141,38 @@
                 android:textAlignment="center"
                 android:text="Justifique sus afirmaciones"
                 android:id="@+id/tvJustificacionT"/>
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/tvJustificacionT"
                 android:background="@drawable/borde"
-                android:id="@+id/tvJustificacion"/>
+                android:id="@+id/etJustificacion"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_below="@+id/tvJustificacion"
+                android:layout_below="@+id/etJustificacion"
                 android:background="@drawable/titulo_filtro"
                 android:backgroundTint="@color/melon"
                 android:textAlignment="center"
-                android:text="Justifique sus afirmaciones"
+                android:text="Observaciones"
                 android:id="@+id/tvObservacionesT"/>
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/tvObservacionesT"
                 android:background="@drawable/borde"
-                android:id="@+id/tvObservaciones"/>
+                android:id="@+id/etObservaciones"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvObservaciones"
+                android:layout_below="@+id/etObservaciones"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"

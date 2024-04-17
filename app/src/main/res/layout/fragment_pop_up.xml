@@ -43,36 +43,28 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/borde"
                 android:textSize="35dp"
+                android:id="@+id/etgrupo"
                 android:padding="5dp"
-                android:hint="Grupo"
-                android:id="@+id/etGrupo"/>
+                android:hint="Grupo"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/borde"
                 android:textSize="35dp"
+                android:id="@+id/etcuatrimestre"
                 android:padding="5dp"
-                android:hint="Cuatrimestre"
-                android:id="@+id/etCuatri"/>
+                android:hint="Cuatrimestre"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/borde"
                 android:textSize="35dp"
+                android:id="@+id/etalumnos"
                 android:padding="5dp"
-                android:hint="No. de alumnos"
-                android:id="@+id/etAlum"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/borde"
-                android:textSize="35dp"
-                android:padding="5dp"
-                android:hint="Fecha de visita"
-                android:id="@+id/etFecha"/>
+                android:hint="No. de alumnos"/>
+
 
             <Button
                 android:layout_width="200dp"
@@ -80,9 +72,9 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
+                android:id="@+id/buttonEnviar"
                 android:text="Enviar"
-                app:cornerRadius="1sp"
-                android:id="@+id/btnEnviarSoli"/>
+                app:cornerRadius="1sp" />
 
 
         </LinearLayout>
