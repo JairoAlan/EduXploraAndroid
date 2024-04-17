@@ -86,6 +86,18 @@ public class Buscar_Fragment extends Fragment {
                 // Este método se llama cuando no se selecciona ningún elemento
             }
         });
+        spMateria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String idMateriaSeleccionada = obtenerIdMateriaSeleccionada(); // Obtener el ID de la materia seleccionada
+                buscar(idMateriaSeleccionada); // Llamar al método buscar con el ID de la materia seleccionada
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Este método se llama cuando no se selecciona ningún elemento
+            }
+        });
 
         return view;
     }
@@ -158,9 +170,9 @@ public class Buscar_Fragment extends Fragment {
         rq.add(requerimento);
     }
 
-    public void buscar(String idCarreraSeleccionada) {
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria=" + idCarreraSeleccionada;
-
+    public void buscar(String idMateriaSeleccionada) {
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria=" + idMateriaSeleccionada;
+        lresultados.removeAllViews();
         JsonObjectRequest requerimento = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
@@ -318,4 +330,13 @@ public class Buscar_Fragment extends Fragment {
         Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
         startActivity(intent);
     }
+    private String obtenerIdMateriaSeleccionada() {
+        // Obtener el ID de la materia seleccionada del Spinner spMateria
+        String idMateriaSeleccionada = "";
+        if (spMateria.getSelectedItem() != null) {
+            idMateriaSeleccionada = idCarrerasList.get(spMateria.getSelectedItemPosition()); // Obtenemos el ID de la lista basado en la posición seleccionada en el Spinner
+        }
+        return idMateriaSeleccionada;
+    }
+
 }
