@@ -65,13 +65,23 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String usuarioRol = intent.getStringExtra("ROL_USUARIO");
         idUsuario = intent.getIntExtra("ID_USUARIO", 0);
+        // Establecer el elemento seleccionado en el BottomNavigationView al inicio
+        binding.bottomNavigationView.setSelectedItemId(R.id.ihome);
         binding.bottomNavigationView.setOnItemSelectedListener(item ->{
 
             if(item.getItemId() == R.id.ihome){
                 replaceFragment(new Home_Fragment());
             }else if(item.getItemId() == R.id.icheck){
+
                 if ("docente".equals(usuarioRol)) {
-                    replaceFragment(new Solicitud_Fragment());
+                    // Crear el fragmento y configurar sus argumentos
+                    Solicitud_Fragment fragment = new Solicitud_Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("ID_USUARIO", idUsuario);
+                    fragment.setArguments(bundle);
+
+                    // Reemplazar el fragmento en la actividad
+                    replaceFragment(fragment);
                 } else if ("coordinador".equals(usuarioRol)) {
                     replaceFragment(new SolicCoor_Fragment());
                 } else if ("vinculador".equals(usuarioRol)) {
@@ -79,17 +89,32 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "No Tienes ningun Rol, contacta con el Admin", Toast.LENGTH_SHORT).show();
                 }
-                // replaceFragment(new SolicCoor_Fragment());
+
+
+
             }else if(item.getItemId() == R.id.isearch){
-                Buscar_Fragment fragment = new Buscar_Fragment();
 
-                // Crear un bundle para pasar el idUsuario al fragmento
-                Bundle bundle = new Bundle();
-                bundle.putInt("ROL_USUARIO", idUsuario); // Pasar el idUsuario al bundle
-                bundle.putInt("ID_USUARIO", idUsuario); // Pasar el idUsuario al bundle
-                fragment.setArguments(bundle);
+                if ("docente".equals(usuarioRol)) {
+                    // Crear el fragmento y configurar sus argumentos
+                    Buscar_Fragment fragment = new Buscar_Fragment();
 
-                replaceFragment(fragment);
+                    // Crear un bundle para pasar el idUsuario al fragmento
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("ROL_USUARIO", idUsuario); // Pasar el idUsuario al bundle
+                    bundle.putInt("ID_USUARIO", idUsuario); // Pasar el idUsuario al bundle
+                    fragment.setArguments(bundle);
+
+
+                    // Reemplazar el fragmento en la actividad
+                    replaceFragment(fragment);
+                } else if ("coordinador".equals(usuarioRol)) {
+                    replaceFragment(new buscar_Coor());
+                } else if ("vinculador".equals(usuarioRol)) {
+                    replaceFragment(new buscar_Coor());
+                } else {
+                    Toast.makeText(this, "No Tienes ningun Rol, contacta con el Admin", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             return true;
@@ -121,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(item.getItemId() == R.id.iComen)
             {
+
                 Menu_Comentarios_Fragment fragment = new Menu_Comentarios_Fragment();
 
                 // Crear un bundle para pasar el idUsuario al fragmento

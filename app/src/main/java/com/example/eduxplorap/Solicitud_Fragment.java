@@ -106,42 +106,8 @@ public class Solicitud_Fragment extends Fragment {
                                         "Carrera: " + objeto.getString("carrera") + "\n" +
                                         "estadoActual: " + objeto.getString("estadoActual"));
 
-                                // Crear botones
-                                Button btnPend = new Button(requireContext());
-                                btnPend.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                                btnPend.setText("Env");
-                                btnPend.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        // Acciones al hacer clic en el botón
-                                    }
-                                });
-
-                                Button btnAcep = new Button(requireContext());
-                                btnAcep.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                                btnAcep.setText("Acep");
-                                btnAcep.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        // Acciones al hacer clic en el botón
-                                    }
-                                });
-
-                                Button btnRecha = new Button(requireContext());
-                                btnRecha.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                                btnRecha.setText("Rech");
-                                btnRecha.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        // Acciones al hacer clic en el botón
-                                    }
-                                });
-
                                 // Agregar TextView y botones al LinearLayout del item
                                 itemLayout.addView(usuarioTextView);
-                                itemLayout.addView(btnPend);
-                                itemLayout.addView(btnAcep);
-                                itemLayout.addView(btnRecha);
 
                                 // Agregar el LinearLayout del item al LinearLayout principal
                                 linearLayout.addView(itemLayout);

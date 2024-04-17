@@ -1,3 +1,4 @@
+
 package com.example.eduxplorap;
 
 import android.content.Intent;
@@ -68,12 +69,9 @@ public class Buscar_Fragment extends Fragment {
         String rolUsuario = "";
         if (bundle != null) {
             idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
-
+            rolUsuario = bundle.getString("ROL_USUARIO", "");
             // Hacer lo que necesites con el idUsuario en el fragmento...
         }
-
-
-
 
         spCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -239,18 +237,6 @@ public class Buscar_Fragment extends Fragment {
                         solicitarButton.setTextColor(getResources().getColor(R.color.black));
                         solicitarButton.setBackgroundResource(R.color.melon);
                         solicitarButton.setBackgroundResource(R.drawable.rounded_button_background);
-
-                        Bundle bundle = getArguments();
-                        int idUsuario = 0;
-                        String rolUsuario = "";
-                        if (bundle != null) {
-                            // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
-                            rolUsuario = bundle.getString("ROL_USUARIO", "");
-                            // Hacer lo que necesites con el idUsuario en el fragmento...
-                        }
-                        if (!"coordinador".equals(rolUsuario) && !"vinculacion".equals(rolUsuario)) {
-                            solicitarButton.setVisibility(View.VISIBLE);
-                        }
 
                         solicitarButton.setOnClickListener(new View.OnClickListener() {
                             @Override
