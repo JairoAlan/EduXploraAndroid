@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:backgroundTint="@color/Griszulado"
-            android:layout_marginTop="340dp"
+            android:layout_marginTop="480dp"
             android:id="@+id/Rluno">
 
         </LinearLayout>
