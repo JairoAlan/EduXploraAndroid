@@ -99,15 +99,25 @@ public class Solicitud_Fragment extends Fragment {
 
                                 // Crear un TextView para mostrar los detalles de la solicitud
                                 TextView usuarioTextView = new TextView(requireContext());
-                                usuarioTextView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                layoutParams.setMargins(16, 16, 16, 16); // Establecer márgenes
+                                usuarioTextView.setLayoutParams(layoutParams);
                                 usuarioTextView.setText("Empresa: " + objeto.getString("nombreEmpresa") + "\n" +
                                         "Grupo: " + objeto.getString("grupo") + "\n" +
                                         "Usuario: " + objeto.getString("nombreUsuario") + "\n" +
                                         "Carrera: " + objeto.getString("carrera") + "\n" +
-                                        "estadoActual: " + objeto.getString("estadoActual"));
+                                        "Estado: " + objeto.getString("estadoActual"));
+                                usuarioTextView.setTextColor(getResources().getColor(R.color.black)); // Establecer color de texto
+                                usuarioTextView.setTextSize(16); // Establecer tamaño de texto
+                                usuarioTextView.setBackgroundResource(R.drawable.borde); // Establecer fondo
+                                usuarioTextView.setBackgroundTintList(getResources().getColorStateList(R.color.Grisazuladooscuro)); // Establecer tinte de fondo
+
+
 
                                 // Agregar TextView y botones al LinearLayout del item
                                 itemLayout.addView(usuarioTextView);
+
 
                                 // Agregar el LinearLayout del item al LinearLayout principal
                                 linearLayout.addView(itemLayout);
