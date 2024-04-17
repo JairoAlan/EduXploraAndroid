@@ -1,25 +1,23 @@
 package com.example.eduxplorap;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,74 +32,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Buscar_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Buscar_Fragment extends Fragment {
 
-    TextView tveduX,tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5;
-    TextView tvResultado6, tvResultado7, tvResultado8, tvResultado9;
-
-    String tvlatitud,tvlatitud1,tvlatitud2,tvlatitud3,tvlatitud4,tvlatitud5,tvlatitud6,tvlatitud7,tvlatitud8,tvlatitud9;
-    String tvlongitud,tvlongitud1,tvlongitud2,tvlongitud3,tvlongitud4,tvlongitud5,tvlongitud6,tvlongitud7,tvlongitud8,tvlongitud9;
-
-    LinearLayout llResultados,llResultados2;
     Spinner spCarrera, spMateria;
+    LinearLayout lresultados;
 
     RequestQueue rq;
-
-    String idCarreraSeleccionada;
-
     String Unilatitud = "20.1352722";
     String Unilongitud = "-98.383043";
 
-    Button btnres1,btnres2,btnres3,btnres4,btnres5,btnres6,btnres7,btnres8,btnres9,
-            btnubi1,btnubi2,btnubi3,btnubi4,btnubi5,btnubi6,btnubi7,btnubi8,btnubi9;
-
     ArrayList<String> idCarrerasList = new ArrayList<>(); // ArrayList para almacenar los idCarrera
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public Buscar_Fragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Buscar_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Buscar_Fragment newInstance(String param1, String param2) {
-        Buscar_Fragment fragment = new Buscar_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -114,252 +58,34 @@ public class Buscar_Fragment extends Fragment {
         spCarrera = view.findViewById(R.id.spCarrera);
         spMateria = view.findViewById(R.id.spMateria);
         // Layouts
-        llResultados = view.findViewById(R.id.llResultados);
-        llResultados2 = view.findViewById(R.id.llResultados2);
-        // TextView
-        tveduX = view.findViewById(R.id.tveduX);
-        tvResultado = view.findViewById(R.id.tvResultado);
-        tvResultado.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado2 = view.findViewById(R.id.tvResultado2);
-        tvResultado2.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado3 = view.findViewById(R.id.tvResultado3);
-        tvResultado3.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado4 = view.findViewById(R.id.tvResultado4);
-        tvResultado4.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado5 = view.findViewById(R.id.tvResultado5);
-        tvResultado5.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado6 = view.findViewById(R.id.tvResultado6);
-        tvResultado6.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado7 = view.findViewById(R.id.tvResultado7);
-        tvResultado7.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado8 = view.findViewById(R.id.tvResultado8);
-        tvResultado8.setMovementMethod(new ScrollingMovementMethod());
-        tvResultado9 = view.findViewById(R.id.tvResultado9);
-        tvResultado9.setMovementMethod(new ScrollingMovementMethod());
-
-        // Botones de resultado
-        btnres1 = view.findViewById(R.id.btnres1);
-        btnres2 = view.findViewById(R.id.btnres2);
-        btnres3 = view.findViewById(R.id.btnres3);
-        btnres4 = view.findViewById(R.id.btnres4);
-        btnres5 = view.findViewById(R.id.btnres5);
-        btnres6 = view.findViewById(R.id.btnres6);
-        btnres7 = view.findViewById(R.id.btnres7);
-        btnres8 = view.findViewById(R.id.btnres8);
-        btnres9 = view.findViewById(R.id.btnres9);
-
-        // Botones de ubicacion
-        btnubi1 = view.findViewById(R.id.btnubi1);
-        btnubi2 = view.findViewById(R.id.btnubi2);
-        btnubi3 = view.findViewById(R.id.btnubi3);
-        btnubi4 = view.findViewById(R.id.btnubi4);
-        btnubi5 = view.findViewById(R.id.btnubi5);
-        btnubi6 = view.findViewById(R.id.btnubi6);
-        btnubi7 = view.findViewById(R.id.btnubi7);
-        btnubi8 = view.findViewById(R.id.btnubi8);
-        btnubi9 = view.findViewById(R.id.btnubi9);
+        lresultados = view.findViewById(R.id.lresultados);
 
         rq = Volley.newRequestQueue(requireContext());
         carreraSr();
+        // Recuperar el idUsuario del Bundle
+        Bundle bundle = getArguments();
+        int idUsuario = 0;
+        String rolUsuario = "";
+        if (bundle != null) {
+            idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
+
+            // Hacer lo que necesites con el idUsuario en el fragmento...
+        }
+
+
+
 
         spCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                
-                idCarreraSeleccionada = String.valueOf(position + 1);
-                materiaSr();
-                buscar();
+                String idCarreraSeleccionada = String.valueOf(position + 1);
+                materiaSr(idCarreraSeleccionada);
+                buscar(idCarreraSeleccionada);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Este método se llama cuando no se selecciona ningún elemento
-            }
-        });
-
-        // BOTONES DE SOLICITAR
-        btnres1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        btnres9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Fragment_pop_up());
-            }
-        });
-
-        // BOTONES DE UBICACION
-
-        btnubi1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud,tvlongitud);
-//                }
-            }
-        });
-
-        btnubi2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud1,tvlongitud1);
-//                }
-
-            }
-        });
-
-        btnubi3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud2,tvlongitud2);
-//                }
-
-            }
-        });
-
-        btnubi4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud3,tvlongitud3);
-//                }
-
-            }
-        });
-
-        btnubi5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud4,tvlongitud4);
-//                }
-
-            }
-        });
-
-        btnubi6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud5,tvlongitud5);
-//                }
-
-            }
-        });
-
-        btnubi7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud6,tvlongitud6);
-//                }
-
-            }
-        });
-
-        btnubi8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud7,tvlongitud7);
-//                }
-
-            }
-        });
-
-        btnubi9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
-//                if(tvlatitud.equals("N/A") && tvlongitud.equals("N/A")){
-//                    Toast.makeText(getContext(), "Consulte la Url, por que no hay Ubicacion Registrada", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    direcccionEntreDosPuntos(Unilatitud,Unilongitud,tvlatitud8,tvlongitud8);
-//                }
-
             }
         });
 
@@ -383,7 +109,6 @@ public class Buscar_Fragment extends Fragment {
                         idCarrerasList.add(ID_Carrera); // Agrega el idCarrera al ArrayList
                     } catch (JSONException e) {
                         Toast.makeText(getActivity(), "No hay Conexion a la Base de Datos", Toast.LENGTH_LONG).show();
-                        //throw new RuntimeException(e);
                     }
                 }
                 spCarrera.setAdapter(adapter);
@@ -392,18 +117,15 @@ public class Buscar_Fragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Toast.makeText(getActivity(), "No hay Conexion a Internet", Toast.LENGTH_LONG).show();
-                // volleyError.printStackTrace();
-                // Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         rq.add(requerimento);
     }
 
-    public void materiaSr() {
-        Log.d("ID_CARRERA_REQUEST", "Solicitando materias para idCarrera: " + idCarreraSeleccionada);
-        String url2 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera="+idCarreraSeleccionada;
+    public void materiaSr(String idCarreraSeleccionada) {
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera=" + idCarreraSeleccionada;
 
-        JsonObjectRequest requerimento2 = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest requerimento = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
@@ -424,7 +146,6 @@ public class Buscar_Fragment extends Fragment {
 
                     spMateria.setAdapter(adapter);
                 } catch (JSONException e) {
-                    //e.printStackTrace();
                     spMateria.setAdapter(null);
                     Toast.makeText(getContext(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_SHORT).show();
                 }
@@ -433,22 +154,16 @@ public class Buscar_Fragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Toast.makeText(getActivity(), "No hay materias registradas para la carrera proporcionada", Toast.LENGTH_LONG).show();
-                //volleyError.printStackTrace();
-                //Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        rq.add(requerimento2);
+        rq.add(requerimento);
     }
 
-    public void buscar() {
-        final TextView[] textViews = {tvResultado, tvResultado2, tvResultado3, tvResultado4, tvResultado5, tvResultado6, tvResultado7, tvResultado8, tvResultado9};
-        final String[] latitudes = {tvlatitud,tvlatitud1,tvlatitud2,tvlatitud3,tvlatitud4,tvlatitud5,tvlatitud6,tvlatitud7,tvlatitud8,tvlatitud9};
-        final String[] longitudes = {tvlongitud,tvlongitud1,tvlongitud2,tvlongitud3,tvlongitud4,tvlongitud5,tvlongitud6,tvlongitud7,tvlongitud8,tvlongitud9};
+    public void buscar(String idCarreraSeleccionada) {
+        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria=" + idCarreraSeleccionada;
 
-        String url3 = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/buscar.php?idMateria="+idCarreraSeleccionada;
-
-        JsonObjectRequest requerimento3 = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest requerimento = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 try {
@@ -459,23 +174,147 @@ public class Buscar_Fragment extends Fragment {
                         return;
                     }
 
-                    if (empresasArray.length() > 0) {
-                        for (int i = 0; i < 9; i++) {
-                            JSONObject empresaObject = empresasArray.getJSONObject(i);
-                            textViews[i].append("Nombre: " + empresaObject.getString("Nombre"));
-                            textViews[i].append("URL: " + empresaObject.getString("Contacto"));
-                            textViews[i].append("Descripcion: " + empresaObject.getString("Descripcion"));
-                            latitudes[i] = empresaObject.getString("latitud");
-                            longitudes[i] = empresaObject.getString("longitud");
+                    for (int i = 0; i < empresasArray.length(); i++) {
+                        JSONObject empresaObject = empresasArray.getJSONObject(i);
+
+                        // Obtener el idEmpresa y guardarlo en una variable
+                        int idEmpresa = empresaObject.getInt("idEmpresa");
+
+                        // Crear un nuevo LinearLayout para cada resultado
+                        LinearLayout resultadoLayout = new LinearLayout(requireContext());
+                        LinearLayout.LayoutParams paramsResultadoLayout = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        paramsResultadoLayout.setMargins(20, 20, 20, 20);
+                        resultadoLayout.setLayoutParams(paramsResultadoLayout);
+                        resultadoLayout.setOrientation(LinearLayout.HORIZONTAL);
+                        resultadoLayout.setBackgroundResource(R.drawable.borde);
+                        int colorGrisAzuladoOscuro = ContextCompat.getColor(requireContext(), R.color.Grisazuladooscuro);
+
+// Establecer el color de fondo del LinearLayout
+                        resultadoLayout.setBackgroundColor(colorGrisAzuladoOscuro);
+
+                        // TextView para el ícono
+                        TextView iconoTextView = new TextView(requireContext());
+                        LinearLayout.LayoutParams paramsIcono = new LinearLayout.LayoutParams(230, 230);
+                        paramsIcono.setMargins(10, 10, 10, 10);
+                        iconoTextView.setLayoutParams(paramsIcono);
+                        iconoTextView.setBackgroundResource(R.drawable.iconoeduxt);
+
+                        // LinearLayout para los detalles
+                        LinearLayout detallesLayout = new LinearLayout(requireContext());
+                        LinearLayout.LayoutParams paramsDetallesLayout = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        detallesLayout.setLayoutParams(paramsDetallesLayout);
+                        detallesLayout.setOrientation(LinearLayout.VERTICAL);
+
+                        // TextView para el resultado
+                        TextView resultadoTextView = new TextView(requireContext());
+                        LinearLayout.LayoutParams paramsResultadoTextView = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                350
+                        );
+                        paramsResultadoTextView.setMargins(10, 10, 10, 10);
+                        resultadoTextView.setLayoutParams(paramsResultadoTextView);
+                        resultadoTextView.setBackgroundResource(R.drawable.borde);
+                        resultadoTextView.setTextColor(getResources().getColor(R.color.black));
+                        resultadoTextView.setPadding(5, 5, 5, 5);
+                        resultadoTextView.setText(empresaObject.getString("Nombre") + "\n" +
+                                empresaObject.getString("Contacto") + "\n" +
+                                empresaObject.getString("Descripcion"));
+
+                        // Botón de Solicitar
+                        Button solicitarButton = new Button(requireContext());
+                        LinearLayout.LayoutParams paramsSolicitarButton = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                110
+                        );
+                        paramsSolicitarButton.setMargins(10, 10, 10, 10);
+                        solicitarButton.setLayoutParams(paramsSolicitarButton);
+                        solicitarButton.setText("Solicitar");
+                        solicitarButton.setTextSize(17);
+                        solicitarButton.setTextColor(getResources().getColor(R.color.black));
+                        solicitarButton.setBackgroundResource(R.color.melon);
+                        solicitarButton.setBackgroundResource(R.drawable.rounded_button_background);
+
+                        Bundle bundle = getArguments();
+                        int idUsuario = 0;
+                        String rolUsuario = "";
+                        if (bundle != null) {
+                            // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
+                            rolUsuario = bundle.getString("ROL_USUARIO", "");
+                            // Hacer lo que necesites con el idUsuario en el fragmento...
                         }
-                    } else {
-                        // No hay materias registradas para la carrera proporcionada
-                        Toast.makeText(getContext(), "No hay Empresas registradas ", Toast.LENGTH_SHORT).show();
+                        if (!"coordinador".equals(rolUsuario) && !"vinculacion".equals(rolUsuario)) {
+                            solicitarButton.setVisibility(View.VISIBLE);
+                        }
+
+                        solicitarButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(requireContext(), Fragment_pop_up.class);
+                                // Recuperar el idUsuario del Bundle si es necesario
+                                Bundle bundle = getArguments();
+                                int idUsuario = 0;
+                                if (bundle != null) {
+                                    idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado en caso de que no se pueda obtener el idUsuario
+                                }
+                                // Pasar el idUsuario como extra
+                                intent.putExtra("ID_USUARIO", idUsuario);
+                                intent.putExtra("ID_EMPRESA", idEmpresa);
+                                startActivity(intent);
+                            }
+                        });
+
+
+                        // Botón de Ubicación
+                        Button ubicacionButton = new Button(requireContext());
+                        LinearLayout.LayoutParams paramsUbicacionButton = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                110
+                        );
+                        paramsUbicacionButton.setMargins(10, 10, 10, 10);
+                        ubicacionButton.setLayoutParams(paramsUbicacionButton);
+                        ubicacionButton.setText("Ubicacion");
+                        ubicacionButton.setTextSize(17);
+                        //ubicacionButton.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                        ubicacionButton.setTextColor(getResources().getColor(R.color.black));
+                        ubicacionButton.setBackgroundResource(R.color.melon);
+                        ubicacionButton.setBackgroundResource(R.drawable.rounded_button_background);
+
+                        ubicacionButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                try {
+                                    // Obtener las coordenadas de latitud y longitud del destino
+                                    String destinoLatitud = empresaObject.getString("latitud");
+                                    String destinoLongitud = empresaObject.getString("longitud");
+
+                                    // Llamar a la función para obtener la dirección entre los dos puntos
+                                    direcccionEntreDosPuntos(Unilatitud, Unilongitud, destinoLatitud, destinoLongitud);
+                                } catch (JSONException e) {
+                                    Toast.makeText(getContext(), "No se pudo obtener la ubicación de la empresa", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+
+                        // Agregar vistas al LinearLayout de detalles
+                        detallesLayout.addView(resultadoTextView);
+                        detallesLayout.addView(solicitarButton);
+                        detallesLayout.addView(ubicacionButton);
+
+                        // Agregar vistas al LinearLayout del resultado
+                        resultadoLayout.addView(iconoTextView);
+                        resultadoLayout.addView(detallesLayout);
+
+                        // Agregar el LinearLayout del resultado al contenedor principal
+                        lresultados.addView(resultadoLayout);
                     }
-
-
                 } catch (JSONException e) {
-                    e.printStackTrace();
                     Toast.makeText(getContext(), "No hay respuesta a lo solicitado de la Base de Datos", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -483,28 +322,14 @@ public class Buscar_Fragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Toast.makeText(getContext(), "No hay conexion a internet", Toast.LENGTH_SHORT).show();
-                //volleyError.printStackTrace();
-                //Toast.makeText(getContext(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        rq.add(requerimento3);
+        rq.add(requerimento);
     }
-
-    // Funcion para enviar a un "Fragment"
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout,fragment);
-        fragmentTransaction.commit();
-    }
-
     public void direcccionEntreDosPuntos(String puntoUnolatitud, String puntoUnolongitud, String destinoLatitud, String destinoLongitud){
         Uri mapUri = Uri.parse("https://maps.google.com/maps?saddr="+puntoUnolatitud+","+puntoUnolongitud+"&daddr="+destinoLatitud+","+destinoLongitud);
         Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
         startActivity(intent);
     }
-
-
-// Fin
 }

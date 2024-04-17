@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,26 +26,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Solicitud_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Solicitud_Fragment extends Fragment {
 
-    RelativeLayout Rluno;
+    LinearLayout Rluno;
     ImageView ivtabla;
     TextView tvTexto;
-    Button btnenv,btnace,btnrech;
+    Button btnenv, btnace, btnrech;
     RequestQueue rq;
+    private View view;
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -52,15 +45,6 @@ public class Solicitud_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Solicitud_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Solicitud_Fragment newInstance(String param1, String param2) {
         Solicitud_Fragment fragment = new Solicitud_Fragment();
         Bundle args = new Bundle();
@@ -82,51 +66,100 @@ public class Solicitud_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_solicitud_, container, false);
-
-        btnenv = view.findViewById(R.id.btnenv);
-        btnace = view.findViewById(R.id.btnace);
-        btnrech = view.findViewById(R.id.btnrech);
-        tvTexto = view.findViewById(R.id.tvTexto);
-        ivtabla = view.findViewById(R.id.ivtabla);
+        view = inflater.inflate(R.layout.fragment_solicitud_, container, false);
         Rluno = view.findViewById(R.id.Rluno);
 
         rq = Volley.newRequestQueue(requireContext());
         mostrar();
         return view;
-
     }
 
-    public void mostrar(){
-        tvTexto.setText("");
-        String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
-        JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray jsonArray) {
-                for(int i=0;i<jsonArray.length();i++){
-                    try {
-                        JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
-                        tvTexto.append("Empresa: "+ objeto.getString("nombreEmpresa")+"\n");
-                        tvTexto.append("Grupo: "+ objeto.getString("grupo")+"\n");
-                        tvTexto.append("Usuario: "+ objeto.getString("nombreUsuario")+"\n");
-                        tvTexto.append("Carrera: "+ objeto.getString("carrera")+"\n");
-                        tvTexto.append("Estado: "+ objeto.getString("estadoActual")+"\n");
-                        tvTexto.append("\n");
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
+    public void mostrar() {
+        // Obtener el idUsuario del Bundle de argumentos
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            int idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado si el ID no está disponible
+
+            String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
+            JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray jsonArray) {
+                    LinearLayout linearLayout = view.findViewById(R.id.Rluno);
+                    linearLayout.removeAllViews(); // Eliminar cualquier vista previa
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        try {
+                            JSONObject objeto = jsonArray.getJSONObject(i);
+                            // Verificar si la solicitud pertenece al usuario logueado
+                            if (objeto.getInt("idUsuario") == idUsuario) {
+                                // Crear la vista para esta solicitud
+                                LinearLayout itemLayout = new LinearLayout(requireContext());
+                                itemLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                itemLayout.setOrientation(LinearLayout.VERTICAL);
+
+                                // Crear un TextView para mostrar los detalles de la solicitud
+                                TextView usuarioTextView = new TextView(requireContext());
+                                usuarioTextView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                usuarioTextView.setText("Empresa: " + objeto.getString("nombreEmpresa") + "\n" +
+                                        "Grupo: " + objeto.getString("grupo") + "\n" +
+                                        "Usuario: " + objeto.getString("nombreUsuario") + "\n" +
+                                        "Carrera: " + objeto.getString("carrera") + "\n" +
+                                        "estadoActual: " + objeto.getString("estadoActual"));
+
+                                // Crear botones
+                                Button btnPend = new Button(requireContext());
+                                btnPend.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                btnPend.setText("Env");
+                                btnPend.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // Acciones al hacer clic en el botón
+                                    }
+                                });
+
+                                Button btnAcep = new Button(requireContext());
+                                btnAcep.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                btnAcep.setText("Acep");
+                                btnAcep.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // Acciones al hacer clic en el botón
+                                    }
+                                });
+
+                                Button btnRecha = new Button(requireContext());
+                                btnRecha.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                btnRecha.setText("Rech");
+                                btnRecha.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // Acciones al hacer clic en el botón
+                                    }
+                                });
+
+                                // Agregar TextView y botones al LinearLayout del item
+                                itemLayout.addView(usuarioTextView);
+                                itemLayout.addView(btnPend);
+                                itemLayout.addView(btnAcep);
+                                itemLayout.addView(btnRecha);
+
+                                // Agregar el LinearLayout del item al LinearLayout principal
+                                linearLayout.addView(itemLayout);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                volleyError.printStackTrace();
-                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        rq.add(requerimento);
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    volleyError.printStackTrace();
+                    Toast.makeText(getContext(), "Error de red: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            rq.add(requerimento);
+        }
     }
-
-//Fin
 }

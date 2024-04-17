@@ -6,9 +6,10 @@
     tools:context=".Solicitud_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical"
         android:background="#e8e8e9">
 
 
@@ -30,79 +31,32 @@
             android:layout_below="@+id/tvEvalua"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30sp"
+            android:layout_marginEnd="40dp"
             android:layout_marginRight="30dp"
             android:text="Consulta el estatus de tu visita guiada"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:id="@+id/tvconsul"/>
 
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        >
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@+id/tvconsul"
-            android:layout_marginLeft="30sp"
-            android:layout_marginRight="30sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="50sp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="#666e93"
-                android:id="@+id/Rluno">
-
-                <ImageView
-                    android:layout_width="75dp"
-                    android:layout_height="85dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/ch"
-                    android:id="@+id/ivtabla"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/ivtabla"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:id="@+id/tvTexto"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivtabla"
-                    android:layout_marginLeft="10sp"
-                    android:text="Env"
-                    android:id="@+id/btnenv"
-                    android:background="#F9C899"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivtabla"
-                    android:layout_toRightOf="@+id/btnenv"
-                    android:layout_marginLeft="10sp"
-                    android:text="Acep"
-                    android:id="@+id/btnace"
-                    android:background="#F9C899"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivtabla"
-                    android:layout_toRightOf="@+id/btnace"
-                    android:layout_marginLeft="10sp"
-                    android:text="Rech"
-                    android:id="@+id/btnrech"
-                    android:background="#F9C899"/>
-
-
-            </RelativeLayout>
+            android:backgroundTint="@color/Griszulado"
+            android:layout_marginTop="560dp"
+            android:id="@+id/Rluno">
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

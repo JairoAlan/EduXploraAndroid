@@ -81,7 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // replaceFragment(new SolicCoor_Fragment());
             }else if(item.getItemId() == R.id.isearch){
-                replaceFragment(new Buscar_Fragment());
+                Buscar_Fragment fragment = new Buscar_Fragment();
+
+                // Crear un bundle para pasar el idUsuario al fragmento
+                Bundle bundle = new Bundle();
+                bundle.putInt("ROL_USUARIO", idUsuario); // Pasar el idUsuario al bundle
+                bundle.putInt("ID_USUARIO", idUsuario); // Pasar el idUsuario al bundle
+                fragment.setArguments(bundle);
+
+                replaceFragment(fragment);
             }
 
             return true;

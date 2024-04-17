@@ -1,91 +1,128 @@
 package com.example.eduxplorap;
-
+import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_pop_up#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Fragment_pop_up extends Fragment {
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
 
-    EditText etGrupo,etCuatri,etAlum,etFecha;
-    Button btnEnviarSoli;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class Fragment_pop_up extends AppCompatActivity {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String API_URL = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtSolV.php";
 
-    public Fragment_pop_up() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_pop_up.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_pop_up newInstance(String param1, String param2) {
-        Fragment_pop_up fragment = new Fragment_pop_up();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    EditText etGrupo, etCuatrimestre, etAlumnos;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        setContentView(R.layout.fragment_pop_up);
+
+        // Habilitar el ajuste de bordes
+        EdgeToEdge.enable(this);
+
+        // Obtener métricas de la ventana
+        DisplayMetrics medidasVentana = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(medidasVentana);
+
+        // Calcular dimensiones de la ventana emergente
+        int ancho = medidasVentana.widthPixels;
+        int alto = medidasVentana.heightPixels;
+        getWindow().setLayout((int)(ancho * 0.95),(int)(alto * 0.75));
+
+        // Inicializar vistas
+        etGrupo = findViewById(R.id.etgrupo);
+        etCuatrimestre = findViewById(R.id.etcuatrimestre);
+        etAlumnos = findViewById(R.id.etalumnos);
+
+        Button buttonEnviar = findViewById(R.id.buttonEnviar);
+
+        // Recuperar los datos de la actividad anterior
+        Bundle extras = getIntent().getExtras();
+        int idUsuario = 0;
+        int idEmpresa = 0; // Agregar la variable para almacenar el idEmpresa
+        if (extras != null) {
+            idUsuario = extras.getInt("ID_USUARIO", 0);
+            idEmpresa = extras.getInt("ID_EMPRESA", 0); // Obtener el idEmpresa de los extras
+        }
+
+        // Configurar el clic del botón de enviar
+        final int finalIdUsuario = idUsuario;
+        final int finalIdEmpresa = idEmpresa;
+        buttonEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enviarDatos(finalIdUsuario, finalIdEmpresa); // Pasar el idEmpresa al método enviarDatos
+            }
+        });
+    }
+
+    private void enviarDatos(int idUsuario, int idEmpresa) {
+        String grupo = etGrupo.getText().toString().trim();
+        String cuatrimestre = etCuatrimestre.getText().toString().trim();
+        String alumnos = etAlumnos.getText().toString().trim();
+
+
+        // Validar que los campos no estén vacíos
+        if (grupo.isEmpty() || cuatrimestre.isEmpty() || alumnos.isEmpty() ) {
+            Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Construir la URL con los parámetros
+        try {
+            String url = API_URL + "?idEmpresa=" + idEmpresa + // Agregar idEmpresa a la URL
+                    "&grupo=" + URLEncoder.encode(grupo, "UTF-8") +
+                    "&idUsuario=" + idUsuario +
+                    "&carrera=" + URLEncoder.encode("Sistemas", "UTF-8") +  // La carrera se establece como "Sistemas"
+                    "&noAlumnos=" + URLEncoder.encode(alumnos, "UTF-8");
+
+            // Ejecutar la tarea asíncrona para enviar los datos
+            new EnviarDatosTask().execute(url);
+        } catch (IOException e) {
+            Toast.makeText(this, "Error al construir la URL", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_pop_up, container, false);
+    private class EnviarDatosTask extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... urls) {
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
 
-        etGrupo = view.findViewById(R.id.etGrupo);
-        etCuatri = view.findViewById(R.id.etCuatri);
-        etAlum = view.findViewById(R.id.etAlum);
-        etFecha = view.findViewById(R.id.etFecha);
+                int responseCode = conn.getResponseCode();
 
-        btnEnviarSoli = view.findViewById(R.id.btnEnviarSoli);
+                conn.disconnect();
 
-        btnEnviarSoli.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(etGrupo.getText().equals(null) && etCuatri.getText().equals(null) && etAlum.getText().equals(null) && etFecha.getText().equals(null)){
-                    Toast.makeText(getContext(), " Todos los campos son requeridos ", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getContext(), " Enviado ", Toast.LENGTH_SHORT).show();
-                }
-//                Toast.makeText(getContext(), " Enviado ", Toast.LENGTH_SHORT).show();
+                return responseCode == HttpURLConnection.HTTP_OK;
+            } catch (IOException e) {
+                return false;
             }
-        });
+        }
 
-        return view;
+        @Override
+        protected void onPostExecute(Boolean success) {
+            if (success) {
+                Toast.makeText(Fragment_pop_up.this, "Datos enviados correctamente", Toast.LENGTH_SHORT).show();
+                // Limpiar los campos después de enviar los datos
+                etGrupo.setText("");
+                etCuatrimestre.setText("");
+                etAlumnos.setText("");
+
+            } else {
+                Toast.makeText(Fragment_pop_up.this, "Error al enviar los datos", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
