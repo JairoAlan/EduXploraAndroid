@@ -162,12 +162,15 @@ public class SolicCoor_Fragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
+    // Método para mostrar las solicitudes de visita
     public void mostrar(){
+        // Arreglo de textViews para mostrar los detalles de las solicitudes
         final TextView[] textViews = {tvTodasSolic, tvTodasSolic2, tvTodasSolic3, tvTodasSolic4};
 
-
+        // URL para obtener las solicitudes de visita desde el servidor
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/TraerSolicitudes.php";
+
+        // Solicitud JSON para obtener los datos del servidor
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
@@ -175,12 +178,14 @@ public class SolicCoor_Fragment extends Fragment {
                 for(int i = 0; i < length; i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
+                        // Mostrar los detalles de la solicitud en el textView correspondiente
                         textViews[i].append("Nombre: "+ objeto.getString("nombreEmpresa")+"\n");
-//                        textViews[i].append("Distancia: "+"\n");
+                        // textViews[i].append("Distancia: "+"\n"); // Puedes obtener la distancia aquí si está disponible en el JSON
                         textViews[i].append("Url: "+ objeto.getString("Contacto")+"\n");
                         textViews[i].append("\n");
                         textViews[i].append("Grupo: "+ objeto.getString("grupo")+"\n");
                         textViews[i].append("\n");
+                        // Almacenar los datos de la solicitud en los arreglos correspondientes
                         nombresEmpresas[i] = objeto.getString("nombreEmpresa");
 //                        distancias[i] = ""; // Aquí podrías obtener la distancia si está disponible en el JSON
                         urls[i] = objeto.getString("Contacto");

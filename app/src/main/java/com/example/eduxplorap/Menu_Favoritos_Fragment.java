@@ -76,6 +76,7 @@ public class Menu_Favoritos_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        // Asignar TextViews del diseño a las variables
         View view = inflater.inflate(R.layout.fragment_menu__favoritos_, container, false);
         tvFav = view.findViewById(R.id.tvFav);
         tvFav.setMovementMethod(new ScrollingMovementMethod());
@@ -96,18 +97,25 @@ public class Menu_Favoritos_Fragment extends Fragment {
         tvFav9 = view.findViewById(R.id.tvFav9);
         tvFav9.setMovementMethod(new ScrollingMovementMethod());
 
+        // Inicializar la cola de solicitudes
         rq = Volley.newRequestQueue(requireContext());
-        mostrar();
 
+        // Llamar al método para mostrar los favoritos
+        mostrar();
         return view;
     }
 
+    // Método para mostrar los favoritos
     public void mostrar(){
         final TextView[] textViews = {tvFav, tvFav2, tvFav3, tvFav4, tvFav5, tvFav6, tvFav7, tvFav8, tvFav9};
+        // URL para obtener los datos de las empresas favoritas
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/BuscarEmpresas.php";
+
+        // Solicitud JSON para obtener los datos de las empresas
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
+                // Iterar sobre los resultados y mostrarlos en los TextViews correspondientes
                 int length = Math.min(jsonArray.length(), textViews.length);
                 for(int i = 0; i < length; i++){
                     try {
@@ -124,6 +132,7 @@ public class Menu_Favoritos_Fragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                // Mostrar mensaje de error si hay problemas con la conexión
                 Toast.makeText(getContext(), "No hay Conexion a Internet ", Toast.LENGTH_SHORT).show();
                 //volleyError.printStackTrace();
                 //Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();

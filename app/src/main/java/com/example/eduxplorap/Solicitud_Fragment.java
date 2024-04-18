@@ -74,19 +74,25 @@ public class Solicitud_Fragment extends Fragment {
         return view;
     }
 
+    // Método para mostrar las solicitudes del usuario
     public void mostrar() {
         // Obtener el idUsuario del Bundle de argumentos
         Bundle bundle = getArguments();
         if (bundle != null) {
             int idUsuario = bundle.getInt("ID_USUARIO", 0); // 0 es el valor predeterminado si el ID no está disponible
 
+            // URL para obtener las solicitudes de visita del servidor
             String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
+
+            // Solicitud JSON para obtener los datos del servidor
             JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray jsonArray) {
+                    // Obtener el LinearLayout donde se mostrarán las solicitudes
                     LinearLayout linearLayout = view.findViewById(R.id.Rluno);
                     linearLayout.removeAllViews(); // Eliminar cualquier vista previa
 
+                    // Iterar a través de las solicitudes recibidas del servidor
                     for (int i = 0; i < jsonArray.length(); i++) {
                         try {
                             JSONObject objeto = jsonArray.getJSONObject(i);

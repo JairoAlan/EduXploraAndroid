@@ -72,7 +72,7 @@ public class Buscar_Fragment extends Fragment {
             rolUsuario = bundle.getString("ROL_USUARIO", "");
             // Hacer lo que necesites con el idUsuario en el fragmento...
         }
-
+//establecer Listener para los spinner
         spCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -86,6 +86,7 @@ public class Buscar_Fragment extends Fragment {
                 // Este método se llama cuando no se selecciona ningún elemento
             }
         });
+        // Método para cargar las materias de una carrera seleccionada desde la API
         spMateria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -131,7 +132,7 @@ public class Buscar_Fragment extends Fragment {
         });
         rq.add(requerimento);
     }
-
+    // Método para cargar las materias de una carrera seleccionada desde la API
     public void materiaSr(String idCarreraSeleccionada) {
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/filtrom.php?idCarrera=" + idCarreraSeleccionada;
 
@@ -202,7 +203,7 @@ public class Buscar_Fragment extends Fragment {
                         resultadoLayout.setBackgroundResource(R.drawable.borde);
                         int colorGrisAzuladoOscuro = ContextCompat.getColor(requireContext(), R.color.Grisazuladooscuro);
 
-// Establecer el color de fondo del LinearLayout
+                        // Establecer el color de fondo del LinearLayout
                         resultadoLayout.setBackgroundColor(colorGrisAzuladoOscuro);
 
                         // TextView para el ícono

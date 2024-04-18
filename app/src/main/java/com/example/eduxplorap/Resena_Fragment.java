@@ -92,7 +92,10 @@ public class Resena_Fragment extends Fragment {
         etObservaciones = view.findViewById(R.id.etObservaciones);
         btnGuardar = view.findViewById(R.id.btnGuardar);
 
+        // Inicializar la cola de solicitudes HTTP
         rq = Volley.newRequestQueue(getContext());
+
+        // Agregar un listener al botón para guardar la reseña cuando se haga clic
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +107,12 @@ public class Resena_Fragment extends Fragment {
         return view;
     }
 
+    // Método para guardar la reseña
     public void GuardarResenia(){
+        // Construir la URL con los parámetros de la reseña
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/Res.php?Actividades="+etActividad.getText()+"&Objetivos="+etObjetivos.getText()+"&Calificacion="+etCalificacion.getText()+"&Recomendacion=" +etRecomendacion.getText()+"&Justificacion="+etJustificacion.getText()+"&Observacion="+etObservaciones.getText()+"&Favoritos="+Favoritos;
+
+        // Crear un objeto JSON vacío
         JSONObject object = new JSONObject();
 //        try {
 //            object.put("Actividades",tvActividad.getText());

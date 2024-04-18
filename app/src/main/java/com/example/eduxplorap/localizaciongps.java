@@ -68,6 +68,8 @@ public class localizaciongps extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_localizaciongps, container, false);
+
+        // Evento clic del botón para fijar la ubicación
         BtnpinLocacion = view.findViewById(R.id.BtnpinLocacion);
 //        BtnDireccionUno = view.findViewById(R.id.BtnDireccionUno);
 //        BtnDireccionDos = view.findViewById(R.id.BtnDireccionDos);
@@ -98,7 +100,7 @@ public class localizaciongps extends Fragment {
 
         return view;
     }
-
+    // Método para abrir la aplicación de mapas con la ubicación fijada
     public void pinLocationMap(String latitud, String longitud){
 
         Uri mapUri = Uri.parse("https://maps.google.com/maps/search/"+latitud+","+longitud);
@@ -106,13 +108,13 @@ public class localizaciongps extends Fragment {
         startActivity(intent);
 
     }
-
+    // Método para abrir la aplicación de mapas con una dirección específica
     public void direccionActual(String destinoLatitud, String destinoLongitud){
         Uri mapUri = Uri.parse("https://maps.google.com/maps?daddr="+destinoLatitud+","+destinoLongitud);
         Intent intent = new Intent(Intent.ACTION_VIEW,mapUri);
         startActivity(intent);
     }
-
+    // Método para abrir la aplicación de mapas con la dirección entre dos puntos
     public void direcccionEntreDosPuntos(String puntoUnolatitud, String puntoUnolongitud, String destinoLatitud, String destinoLongitud){
         Uri mapUri = Uri.parse("https://maps.google.com/maps?saddr="+puntoUnolatitud+","+puntoUnolongitud+"&daddr="+destinoLatitud+","+destinoLongitud);
         Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);

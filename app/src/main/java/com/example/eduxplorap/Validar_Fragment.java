@@ -35,28 +35,25 @@ public class Validar_Fragment extends Fragment {
 
     RequestQueue rq;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Parámetros para la inicialización del fragmento
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public Validar_Fragment() {
-        // Required empty public constructor
+        // Constructor público vacío requerido por Android
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Use este método de fábrica para crear una nueva instancia de
+     * este fragmento utilizando los parámetros proporcionados.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param param1 Parámetro 1.
+     * @param param2 Parámetro 2.
      * @return A new instance of fragment Validar_Fragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static Validar_Fragment newInstance(String param1, String param2) {
         Validar_Fragment fragment = new Validar_Fragment();
         Bundle args = new Bundle();
@@ -78,27 +75,38 @@ public class Validar_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflar el diseño para este fragmento
         View view = inflater.inflate(R.layout.fragment_validar_, container, false);
 
+        // Inicializar los botones y el TextView
         btnPend = view.findViewById(R.id.btnPend);
         btnAcep = view.findViewById(R.id.btnAcep);
         btnRecha = view.findViewById(R.id.btnRecha);
         tvTodasSolic = view.findViewById(R.id.tvTodasSolic);
-        tvTodasSolic.setMovementMethod(new ScrollingMovementMethod());
+        tvTodasSolic.setMovementMethod(new ScrollingMovementMethod()); // Habilitar desplazamiento para el TextView
+
+        // Inicializar la cola de solicitudes Volley
         rq = Volley.newRequestQueue(requireContext());
+
+        // Mostrar las solicitudes
         mostrar();
+
+        // Retornar la vista del fragmento
         return view;
     }
 
+    // Método para mostrar las solicitudes
     public void mostrar(){
-        tvTodasSolic.setText("");
+        tvTodasSolic.setText(""); // Limpiar el TextView
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/obtenerUsuarios.php";
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
+                // Iterar sobre el JSONArray recibido del servidor
                 for(int i=0;i<jsonArray.length();i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
+                        // Agregar los detalles de la solicitud al TextView
                         tvTodasSolic.append("Empresa: "+ objeto.getString("nombreEmpresa")+"\n");
                         tvTodasSolic.append("Grupo: "+ objeto.getString("grupo")+"\n");
                         tvTodasSolic.append("Usuario: "+ objeto.getString("nombreUsuario")+"\n");
@@ -115,9 +123,11 @@ public class Validar_Fragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 volleyError.printStackTrace();
+                // Mostrar un mensaje de error en caso de que falle la solicitud
                 Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+        // Agregar la solicitud a la cola de solicitudes
         rq.add(requerimento);
     }
 }

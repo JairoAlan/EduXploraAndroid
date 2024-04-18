@@ -64,9 +64,9 @@ public class reportes_Coor extends Fragment {
     // Define el código de solicitud de permiso como una constante
     private static final int REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE = 1;
 
-    Button btnRepo_Gen;
-    List<String[]> data = new ArrayList<>();
-    RequestQueue rq;
+    Button btnRepo_Gen; // Botón para generar el reporte
+    List<String[]> data = new ArrayList<>(); // Lista para almacenar los datos del reporte
+    RequestQueue rq; // Cola de solicitudes para realizar la petición HTTP
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -136,12 +136,13 @@ public class reportes_Coor extends Fragment {
     public void createPDF() {
         Document doc = new Document();
         try {
+            // Obtener la ruta del directorio de descargas y el nombre del archivo PDF
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/Reporte.pdf";
             File file = new File(path);
             FileOutputStream fos = new FileOutputStream(file);
-            PdfWriter.getInstance(doc, fos);
-            doc.open();
-            addTitlePage(doc);
+            PdfWriter.getInstance(doc, fos); // Crear el escritor del PDF
+            doc.open(); // Abrir el documento PDF
+            addTitlePage(doc); // Agregar la página de título al documento
 
             // Crear una tabla con 5 columnas
             PdfPTable table = new PdfPTable(5);

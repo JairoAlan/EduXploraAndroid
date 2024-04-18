@@ -25,7 +25,7 @@ public class Menu_Comentarios_Fragment extends Fragment {
     // URL de la API para enviar comentarios
     private static final String API_URL = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/contactoV.php";
 
-    // Campos de entrada de texto para correo electrónico y mensaje
+    // Campos de entrada de texto para correo electrónico y mensajes
     EditText tvCorreoComent, tvMensajeComent;
     Button btnenviarcoment;
 

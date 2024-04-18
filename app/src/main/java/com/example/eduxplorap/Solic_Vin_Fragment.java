@@ -33,13 +33,16 @@ import java.util.jar.JarException;
  */
 public class Solic_Vin_Fragment extends Fragment {
 
+    // Declaración de vistas y botones
     TextView tvTodasSolic, tvTodasSolic2, tvTodasSolic3, tvTodasSolic4;
     Button btnAceptarV1, btnAceptarV2, btnAceptarV3, btnAceptarV4;
     Button btnCancelarV1, btnCancelarV2, btnCancelarV3, btnCancelarV4;
+    // Arreglos para almacenar nombres de empresas, URLs y grupos
     final String[] nombresEmpresas = new String[4];
-    //        final String[] distancias = new String[4];
     final String[] urls = new String[4];
     final String[] grupos = new String[4];
+
+    // Cola de solicitudes HTTP
     RequestQueue rq;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,7 +89,10 @@ public class Solic_Vin_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        // Inflar el diseño para este fragmento
         View view = inflater.inflate(R.layout.fragment_solic_vin, container, false);
+
+        // Inicializar las vistas y los botones
         tvTodasSolic = view.findViewById(R.id.tvNombreV);
         tvTodasSolic.setMovementMethod(new ScrollingMovementMethod());
         tvTodasSolic2 = view.findViewById(R.id.tvNombreV2);
@@ -164,10 +170,15 @@ public class Solic_Vin_Fragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
+    // Método para mostrar las solicitudes de visita
     public void mostrar(){
+        // Arreglo de textViews para mostrar los detalles de las solicitudes
         final TextView[] textViews = {tvTodasSolic, tvTodasSolic2, tvTodasSolic3, tvTodasSolic4};
+
+        // URL para obtener las solicitudes de visita desde el servidor
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/TraerSolicitudesVin.php";
+
+        // Solicitud JSON para obtener los datos del servidor
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
@@ -175,12 +186,14 @@ public class Solic_Vin_Fragment extends Fragment {
                 for(int i = 0; i < length; i++){
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
+                        // Mostrar los detalles de la solicitud en el textView correspondiente
                         textViews[i].append("Nombre: "+ objeto.getString("nombreEmpresa")+"\n");
-                        textViews[i].append("Distancia: "+"\n");
+                        textViews[i].append("Distancia: "+"\n"); // Puedes obtener la distancia aquí si está disponible en el JSON
                         textViews[i].append("Url: "+ objeto.getString("Contacto")+"\n");
                         textViews[i].append("\n");
                         textViews[i].append("Grupo: "+ objeto.getString("grupo")+"\n");
                         textViews[i].append("\n");
+                        // Almacenar los datos de la solicitud en los arreglos correspondientes
                         nombresEmpresas[i] = objeto.getString("nombreEmpresa");
 //                        distancias[i] = ""; // Aquí podrías obtener la distancia si está disponible en el JSON
                         urls[i] = objeto.getString("Contacto");
@@ -201,8 +214,11 @@ public class Solic_Vin_Fragment extends Fragment {
         rq.add(requerimento);
     }
 
+    // Método para cancelar una visita
     public void CancelarVisita(int num){
+        // URL para cancelar la visita
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/EstadoRechazado.php?Nombre="+nombresEmpresas[num-1]+"&grupo="+grupos[num-1];
+
         JSONObject object = new JSONObject();
 //        try {
 //            object.put("Nombre",nombresEmpresas[num-1]);
@@ -210,6 +226,7 @@ public class Solic_Vin_Fragment extends Fragment {
 //        } catch (JSONException e) {
 //            throw new RuntimeException(e);
 //        }
+        // Solicitud JSON para cancelar la visita
         JsonObjectRequest jasonObjtRequest = new JsonObjectRequest(Request.Method.PUT, url, object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {

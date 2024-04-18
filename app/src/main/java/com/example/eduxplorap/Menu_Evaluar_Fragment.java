@@ -59,9 +59,7 @@ public class Menu_Evaluar_Fragment extends Fragment {
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment Menu_Evaluar_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Menu_Evaluar_Fragment newInstance(String param1, String param2) {
+     */public static Menu_Evaluar_Fragment newInstance(String param1, String param2) {
         Menu_Evaluar_Fragment fragment = new Menu_Evaluar_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -73,6 +71,7 @@ public class Menu_Evaluar_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Verificar si hay argumentos
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -82,8 +81,9 @@ public class Menu_Evaluar_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflar el diseño para este fragmento
         View view = inflater.inflate(R.layout.fragment_menu__evaluar_, container, false);
+        // Inicializar vistas
         tvNombreR = view.findViewById(R.id.tvNombreR);
         tvNombreR.setMovementMethod(new ScrollingMovementMethod());
         tvNombreR2 = view.findViewById(R.id.tvNombreR2);
@@ -97,8 +97,12 @@ public class Menu_Evaluar_Fragment extends Fragment {
         btnresena3 = view.findViewById(R.id.btnresena3);
         btnresena4 = view.findViewById(R.id.btnresena4);
 
-        rq = Volley.newRequestQueue(getContext()); // Inicializar RequestQueue
+        // Inicializar la cola de solicitudes Volley
+        rq = Volley.newRequestQueue(getContext());
+        // Mostrar la lista de empresas
         mostrar();
+
+        // Configurar listeners de botones para abrir el fragmento de reseña
         btnresena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,48 +128,63 @@ public class Menu_Evaluar_Fragment extends Fragment {
             }
         });
         return view;
-
     }
-    public void mostrar(){
+
+    /**
+     * Método para obtener y mostrar la lista de empresas disponibles.
+     * Realiza una solicitud HTTP para obtener los datos del servidor.
+     */
+    public void mostrar() {
+        // Arreglo de textViews para mostrar información de las empresas
         final TextView[] textViews = {tvNombreR, tvNombreR2, tvNombreR3, tvNombreR4};
-
-
+        // URL para la solicitud HTTP
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/TraerSolicitudesRes.php";
+        // Realizar la solicitud JSONArrayRequest
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
+                // Obtener la longitud mínima entre el tamaño del JSONArray y el tamaño de textViews
                 int length = Math.min(jsonArray.length(), textViews.length);
-                for(int i = 0; i < length; i++){
+                // Iterar sobre los elementos JSON obtenidos
+                for (int i = 0; i < length; i++) {
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
-                        textViews[i].append("Nombre: "+ objeto.getString("nombreEmpresa")+"\n");
+                        // Mostrar la información de la empresa en los textViews
+                        textViews[i].append("Nombre: " + objeto.getString("nombreEmpresa") + "\n");
 //                        textViews[i].append("Distancia: "+"\n");
-                        textViews[i].append("Url: "+ objeto.getString("Contacto")+"\n");
+                        textViews[i].append("Url: " + objeto.getString("Contacto") + "\n");
                         textViews[i].append("\n");
-                        textViews[i].append("Grupo: "+ objeto.getString("grupo")+"\n");
+                        textViews[i].append("Grupo: " + objeto.getString("grupo") + "\n");
                         textViews[i].append("\n");
                         nombresEmpresas[i] = objeto.getString("nombreEmpresa");
 //                        distancias[i] = ""; // Aquí podrías obtener la distancia si está disponible en el JSON
                         grupos[i] = objeto.getString("grupo");
                     } catch (JSONException e) {
+                        // Manejar excepciones JSON
                         throw new RuntimeException(e);
                     }
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                // Manejar errores de respuesta
 //                volleyError.printStackTrace();
 //                Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+        // Agregar la solicitud a la cola de solicitudes
         rq.add(requerimento);
     }
-    public void iraEvaluar(Fragment fragment){
+
+    /**
+     * Método para cambiar al fragmento de reseña.
+     * @param fragment El fragmento de reseña a mostrar.
+     */
+    public void iraEvaluar(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout,fragment);
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
 }

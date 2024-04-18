@@ -52,9 +52,7 @@ public class Home_Fragment extends Fragment {
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment Home_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Home_Fragment newInstance(String param1, String param2) {
+     */ public static Home_Fragment newInstance(String param1, String param2) {
         Home_Fragment fragment = new Home_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -66,6 +64,7 @@ public class Home_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Verificar si hay argumentos
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -75,47 +74,66 @@ public class Home_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflar el diseño para este fragmento
         View view = inflater.inflate(R.layout.fragment_home_, container, false);
 
+        // Inicializar vistas
         tvTodasSolic = view.findViewById(R.id.tvUno);
         tvTodasSolic.setMovementMethod(new ScrollingMovementMethod());
         tvTodasSolic2 = view.findViewById(R.id.tvDos);
         tvTodasSolic2.setMovementMethod(new ScrollingMovementMethod());
         tvTodasSolic3 = view.findViewById(R.id.tvTres);
         tvTodasSolic3.setMovementMethod(new ScrollingMovementMethod());
+
+        // Inicializar la cola de solicitudes Volley
         rq = Volley.newRequestQueue(requireContext());
+
+        // Mostrar la lista de empresas
         mostrar();
 
         return view;
     }
 
-    public void mostrar(){
+    /**
+     * Método para obtener y mostrar la lista de empresas disponibles.
+     * Realiza una solicitud HTTP para obtener los datos del servidor.
+     */
+    public void mostrar() {
+        // Arreglo de textViews para mostrar información de las empresas
         final TextView[] textViews = {tvTodasSolic, tvTodasSolic2, tvTodasSolic3};
+
+        // URL para la solicitud HTTP
         String url = "https://busc-int-upt-0f93f68ff11c.herokuapp.com/BuscarEmpresas.php";
+
+        // Realizar la solicitud JSONArrayRequest
         JsonArrayRequest requerimento = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
+                // Obtener la longitud mínima entre el tamaño del JSONArray y el tamaño de textViews
                 int length = Math.min(jsonArray.length(), textViews.length);
-                for(int i = 0; i < length; i++){
+                // Iterar sobre los elementos JSON obtenidos
+                for (int i = 0; i < length; i++) {
                     try {
                         JSONObject objeto = new JSONObject(jsonArray.get(i).toString());
-                        textViews[i].append("Empresa: "+ objeto.getString("Nombre")+"\n");
-                        textViews[i].append("URL: "+ objeto.getString("Contacto")+"\n");
+                        // Mostrar la información de la empresa en los textViews
+                        textViews[i].append("Empresa: " + objeto.getString("Nombre") + "\n");
+                        textViews[i].append("URL: " + objeto.getString("Contacto") + "\n");
                         textViews[i].append("\n");
                     } catch (JSONException e) {
+                        // Manejar excepciones JSON
                         throw new RuntimeException(e);
                     }
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(getContext(), "No hay Conexion a Internet ", Toast.LENGTH_SHORT).show();
-                //volleyError.printStackTrace();
-                //Toast.makeText(getContext(),volleyError.getMessage(),Toast.LENGTH_SHORT).show();
+                // Manejar errores de respuesta
+                Toast.makeText(getContext(), "No hay conexión a Internet", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Agregar la solicitud a la cola de solicitudes
         rq.add(requerimento);
     }
 
